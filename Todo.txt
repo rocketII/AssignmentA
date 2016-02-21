@@ -1,0 +1,105 @@
+----------------------------[ Todo ]-------------------------------------------
+1. this->API.bridge->*bridge. Kommer inte åt CellPhone klassen. 
+   Kan vara så att konstruktor inte gör rätt.
+2.testa alla funktioner så minnesläckor och segmentationfault korrigeras.
+  
+    FunktionDeklarationer med deras respektive klasser:
+system:
+    bool menu(void);
+    status: okänd
+    bool stockLegit(const int stock) const;
+    status: okänd
+    bool priceLegit(const int price)const;
+    status: okänd
+    void inputA(void);
+    status: okänd
+    void inputB(void);
+    status: okänd
+    void inputC(void);
+    status: okänd
+    void inputD(void);
+    status: okänd
+    void inputE(void);
+    status: okänd
+    void inputF(void);
+    status: okänd
+    void inputG(void);
+    status: okänd
+CellPhoneHandler:
+        CellPhoneHandler();
+        status: okänd
+        CellPhoneHandler(int size);
+        status: okänd
+        ~CellPhoneHandler();
+        status: okänd
+        CellPhoneHandler(const CellPhoneHandler &origin);
+        status: okänd
+        CellPhoneHandler& operator=(CellPhoneHandler &origin);
+        status: okänd
+        string fillItUp(string* myStringPtr, int nrOfPhones, bool myStringPtrUsed)const;
+        status: okänd
+        int howManyPhones( void)const;
+        status: okänd
+        bool ExportDb(string filepathWithFileName)const;
+        status: okänd
+        bool ImportDb(string filepathWithFileName);
+        status: okänd
+        bool removePhoneByModel(string model);
+        status: okänd
+        bool addPhone(string model, int InStock, int price);
+        status: okänd
+        bool changePrice(int forPriceGreaterThan, float percentage);
+        status: okänd
+        string showAllPhones()const;
+        status: okänd
+        string showAllPhonesInStockLessthanUints(int units)const;
+        status: okänd
+        void IOdbgIfstream(const ifstream &io)const;
+        status: okänd
+        void IOdbgOfstream(const ofstream &io) const;
+
+CellPhone: 
+
+    CellPhone();
+
+    CellPhone(string model, int InStock, int price);
+
+    ~CellPhone();
+
+    void setModel(string model);
+
+    void setStock(int currentStock);
+
+    void setPrice(int price);
+
+    string getModel(void) const;
+
+    int getStock(void) const;
+
+    int getPrice(void) const;
+
+    string toString() const;  
+
+----[Resultat]---------
+    *Minnesläckor*
+Jag använde Valgrind in min Unix liknande miljö 
+kör man programmet med följande alternativ
+N = NEJ | J = JA
+==========================================
+          A | B | C | D | E | F | G | H |
+==========================================
+Memleaks? N   J   J   J   J   J   J    N
+
+
+       *SIGSEGV eller illegal minnesläsning*
+Jag använde Valgrind in min Unix liknande miljö 
+kör man programmet med följande alternativ utan något annat alternativ innan. H på slutet är inkl. om det går.
+N = NEJ | J = JA
+==========================================
+          A | B | C | D | E | F | G | H |
+==========================================
+SIGSEGV?  J   J   J   J   J   J   J   N
+
+-------------------------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
+-------------------------------------------------------------------------------
