@@ -26,7 +26,7 @@ int main(int argc, char** argv)
 	 * 
 	 * 
 	 */
-	
+	void testMyClass();
 
 	return 0;
 }

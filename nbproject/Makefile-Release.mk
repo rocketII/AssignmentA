@@ -35,12 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/a21815ac/CellPhone.o \
-	${OBJECTDIR}/_ext/a21815ac/CellPhoneHandler.o \
-	${OBJECTDIR}/_ext/a21815ac/System.o \
-	${OBJECTDIR}/_ext/a21815ac/TestCellPhoneHandler.o \
-	${OBJECTDIR}/_ext/a21815ac/Testmain.o \
-	${OBJECTDIR}/_ext/a21815ac/main.o
+	${OBJECTDIR}/CellPhone.o \
+	${OBJECTDIR}/CellPhoneHandler.o \
+	${OBJECTDIR}/System.o \
+	${OBJECTDIR}/TestCellPhoneHandler.o \
+	${OBJECTDIR}/Testmain.o \
+	${OBJECTDIR}/main.o
 
 
 # C Compiler Flags
@@ -67,35 +67,35 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/assignmenta: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/assignmenta ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/a21815ac/CellPhone.o: ../InlämningA/CellPhone.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a21815ac
+${OBJECTDIR}/CellPhone.o: CellPhone.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a21815ac/CellPhone.o ../InlämningA/CellPhone.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CellPhone.o CellPhone.cpp
 
-${OBJECTDIR}/_ext/a21815ac/CellPhoneHandler.o: ../InlämningA/CellPhoneHandler.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a21815ac
+${OBJECTDIR}/CellPhoneHandler.o: CellPhoneHandler.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a21815ac/CellPhoneHandler.o ../InlämningA/CellPhoneHandler.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CellPhoneHandler.o CellPhoneHandler.cpp
 
-${OBJECTDIR}/_ext/a21815ac/System.o: ../InlämningA/System.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a21815ac
+${OBJECTDIR}/System.o: System.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a21815ac/System.o ../InlämningA/System.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/System.o System.cpp
 
-${OBJECTDIR}/_ext/a21815ac/TestCellPhoneHandler.o: ../InlämningA/TestCellPhoneHandler.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a21815ac
+${OBJECTDIR}/TestCellPhoneHandler.o: TestCellPhoneHandler.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a21815ac/TestCellPhoneHandler.o ../InlämningA/TestCellPhoneHandler.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TestCellPhoneHandler.o TestCellPhoneHandler.cpp
 
-${OBJECTDIR}/_ext/a21815ac/Testmain.o: ../InlämningA/Testmain.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a21815ac
+${OBJECTDIR}/Testmain.o: Testmain.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a21815ac/Testmain.o ../InlämningA/Testmain.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Testmain.o Testmain.cpp
 
-${OBJECTDIR}/_ext/a21815ac/main.o: ../InlämningA/main.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a21815ac
+${OBJECTDIR}/main.o: main.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a21815ac/main.o ../InlämningA/main.cpp
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

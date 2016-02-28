@@ -27,8 +27,8 @@ class CellPhoneHandler
 {
 private:
     //Shall point to an CellPhone array containing pointers to objects of the CellPhoneClass
-    CellPhone **bridge = nullptr_t;	
-    int sizeArray=5, current=0;
+    CellPhone **bridge = NULL;	
+    int sizeArray=5, numberOfPhones=0;
     string *myStringPtr;
     bool myStringPtrUsed=false;
 public:
@@ -49,21 +49,23 @@ public:
     
     CellPhoneHandler(const CellPhoneHandler &origin);
     
-    //operator overloading = helps us do deepCopy.
+    //operator overloading = helps us do deepCopy. and the return enable chain copy(a=b=c);
     
-    CellPhoneHandler& operator=(CellPhoneHandler &origin);
+    CellPhoneHandler& operator=(const CellPhoneHandler &origin);
     
     //recieves string array. The array are then filled with the function toString from cellphoneObjects.
+	////////////////////////////////////////////////////////////////////////////////////
+	//AllTheDataStored2Array a.k.a. fillitUp().////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////
+    string AllTheDataStored2Array(string* myStringPtr,const int nrOfPhones);
     
-    string AllTheDataStored2Array(string* myStringPtr, int nrOfPhones, bool myStringPtrUsed)const;
-    
-    //used with fillItUp()
+    //used with AllTheDataStored2Array (fillItUp())
     
     int howManyPhones( void)const;
     
     //Takes all data and save to text file
     
-    bool ExportDb(string filepathWithFileName)const;
+    bool ExportDb(string filepathWithFileName);
     
     //Takes all data from text file and put in a class array containing data
     
@@ -74,8 +76,7 @@ public:
     bool addPhone(string model, int InStock, int price);
     
     bool changePrice(int forPriceGreaterThan, float percentage);
-    
-    string showAllPhones()const;
+    void showAllPhones(string &myStringArray)const;
     
     string showAllPhonesInStockLessthanUints(int units)const;
     

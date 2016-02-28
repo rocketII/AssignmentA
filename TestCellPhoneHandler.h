@@ -11,7 +11,7 @@
 
 #ifndef TESTCELLPHONEHANDLER_H
 #define TESTCELLPHONEHANDLER_H
-
+void testMyClass();
 
 
 #endif /* TESTCELLPHONEHANDLER_H */

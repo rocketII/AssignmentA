@@ -46,22 +46,22 @@ bool System::menu(void)
 			this->inputA();
 			break;
 		case 'B':
-			//this->inputB();
+			this->inputB();
 			break;
 		case 'C':
-			//this->inputC();
+			this->inputC();
 			break;
 		case 'D':
-			//this->inputD();
+			this->inputD();
 			break;
 		case 'E':
-			//this->inputE();
+			this->inputE();
 			break;
 		case 'F':
-			//this->inputF();
+			this->inputF();
 			break;
 		case 'G':
-			//this->inputG();
+			this->inputG();
 			break;
 		case 'H':
 			MenuFlag = true;
@@ -73,7 +73,7 @@ bool System::menu(void)
 
 //CURRENTLY OUT OF ORDER
 //use try catch to make sure only legit whole numbers are entered.
-/*bool System::stockLegit(const int stock) const
+bool System::stockLegit(const int stock) const
 {
 	bool flag = false;
 	if(stock < 0)
@@ -90,10 +90,10 @@ bool System::menu(void)
     
 	
 }
- * */
-//CURRENTLY OUT OF ORDER
+
+
 //uses try catch to check that price is not negative
-/*bool System::priceLegit(const int price)const
+bool System::priceLegit(const int price)const
 {
 	bool flag = false;
 	if(price < 0)
@@ -107,7 +107,7 @@ bool System::menu(void)
 	return flag;
 	
 }
-*/
+
 //TESTING
 //manage input to CellPhoneHandler.
 void System::inputA(void)
@@ -134,7 +134,7 @@ void System::inputA(void)
     
          } catch(exception &e)
         {
-        cout << "Error: " << e.what() << endl;
+		cout << "Error: " << e.what() << endl;
         }
     }while(flag_Stock == false && flag_Price == false);
     addSuccess=this->API.addPhone(tmpModel, tmpStock, tmpPrice);
