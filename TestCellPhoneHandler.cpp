@@ -30,7 +30,7 @@ void testMyClass()
     std::cout<<"entering phase 2"<<std::endl;
 
 
-    //2.
+    //2. här hände något.. orsak return main kod 11.
 	myTest.addPhone("sony PSP", 10000, 2000);
 	myTest.addPhone("Microsoft phone x3001", 15000, 1000);
 

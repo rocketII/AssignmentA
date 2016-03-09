@@ -29,7 +29,7 @@ using namespace std;
 int main(void)
 {
 	std::cout << "I haz phail"<<'\n';
-    //testMyClass();
+    testMyClass();
     /*
 	// IF WINDOWS _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	//VALGRIND FOR UNIX SYSTEMS
