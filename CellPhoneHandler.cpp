@@ -15,7 +15,7 @@ CellPhoneHandler::CellPhoneHandler()
 	//create default array with pointers to default objects of CellPhoneClass
 	this->bridge = new CellPhone*[5];
 	this->myStringPtr=NULL;
-	
+
 	
 	
 }
@@ -33,7 +33,8 @@ CellPhoneHandler::CellPhoneHandler(int size)
 
 CellPhoneHandler::~CellPhoneHandler()
 {
-	if(this->bridge != NULL)
+    //we could use typeId check
+	if(this->bridge != nullptr)
 	{
 		///This time we only destroy those which we added not array capacity. Sorry OS for last time :s
 		for(int i=0; i < this->howManyPhones(); i++)
@@ -41,11 +42,6 @@ CellPhoneHandler::~CellPhoneHandler()
 			delete this->bridge[i];
 		}
 		delete [] this->bridge;
-		
-	}
-	if(this->myStringPtrUsed == true)
-	{
-		delete []  this->myStringPtr;
 	}
 }
 
@@ -55,91 +51,54 @@ CellPhoneHandler::CellPhoneHandler(const CellPhoneHandler &origin)
 {
 	
 	this->sizeArray=origin.sizeArray;
-	
+	this->numberOfPhones=origin.numberOfPhones;
 	this->bridge = new CellPhone*[origin.sizeArray];
 	
 	for(int i =0; this->howManyPhones(); i++)
-	{ 
+	{
+        //new return pointer
 		this->bridge[i]=new CellPhone(*origin.bridge[i]);
-		
 	}
 }
 
-CellPhoneHandler& CellPhoneHandler::operator =(const CellPhoneHandler& origin)
+CellPhoneHandler& CellPhoneHandler::operator=(const CellPhoneHandler& origin)
 {
 	//orgin and this pointer cannot have the same address if the assigment event are to occour.
 	if(this != &origin)
 	{
-		//deep copy.
-		
-		//make sure target and Source has the same size.
-		this->sizeArray = origin.sizeArray;
-		
-		//for(int i=0; i < origin.howManyPhones(); i++)
-		//{
-			//empty target on object pointer by freeing memory on the heap.
-		for(int i=0; i < this->howManyPhones(); i++)
-		{
-		delete this->bridge[i];
-		}
-		//Dealloc memory of array.
-			
-		delete [] this->bridge; //you can create freeMemory() to save work.
-			
-		//the target then creates an new array filled with object pointers!!!
-			
-	 	this->bridge= new CellPhone*[origin.sizeArray] ;              //makecopy()
-			
-		//ofc! We must fill the array with pointer objects that orgin has.
-			
-	 	for(int i =0; i < this->howManyPhones(); i++)
-	 	{
-	 		this->bridge[i]=new CellPhone(*origin.bridge[i]);
-	 	}
-			
-		//}
+
+		this->numberOfPhones = origin.numberOfPhones;
+        //1
+        this->sizeArray=origin.sizeArray + 5;
+
+		CellPhone **tmpHolder= new CellPhone*[this->sizeArray];
+        //2
+        for (int i = 0; i < this->numberOfPhones; ++i)
+        {
+            tmpHolder[i] = origin.bridge[i];
+        }
+        //3
+        delete [] this->bridge;
+        //4
+        this->bridge = tmpHolder;
 	}
 	return *this;
 }
-//An array with enoug space for all the data are sent here and filled with each object data in CellPhone Class.
+//An array with enough space for all the data are sent here and filled with each object data in CellPhone Class.
 ////////////////////////////////////////////////////////////////////////////////////
 //a.k.a. fillitUp().
 ///////////////////////////////////////////////////////////////////////////////////
-
-string CellPhoneHandler::AllTheDataStored2Array(string* myStringPtr, const int nrOfPhones)
+//makesure that the myStringPtr got memory allocated before sending here.
+void CellPhoneHandler::AllTheDataStored2Array(string*& myStringPtr)
 {
-	if(myStringPtr == NULL)
+	//fill string array with strings from each obj.toString();
+	for(int i = 0; i < this->numberOfPhones; i++)
 	{
-		myStringPtr = new string[nrOfPhones];
+		myStringPtr[i] = this->bridge[i]->toString();
 	}
-	else
-	{
-		delete myStringPtr;
-	}
-	
-	
-	this->myStringPtrUsed=true;
-	
-	stringstream ss;
-	
-	for(int i = 0; i < nrOfPhones; i++)
-	{
-		
-		myStringPtr[i] =(string) this->bridge[i]->toString();
-	}
-	
-	for(int i = 0; i < nrOfPhones; i++)
-	{
-		
-		ss << myStringPtr[i]; 
-	}
-	
-	return ss.str();
-	
-	
 }
 
-int CellPhoneHandler::howManyPhones( void)const
+int CellPhoneHandler::howManyPhones(void)const
 {
 	//current keep track of cellphones
 	
@@ -150,33 +109,39 @@ int CellPhoneHandler::howManyPhones( void)const
 }
 //we open up an file stream that can write to given file in that destination on localhost.
 //we write to an binary file the so called "save file". Data are in structure so that we can easily import it later with this software.
-bool CellPhoneHandler::ExportDb(string filepathWithFileName)
+bool CellPhoneHandler::ExportDb(string filePathWithFileName)
 {
-	bool flag = false;
+    /*
+     * file structure
+     * first two reads should contain arraySize followed by numberOfPhones
+     * the the cellphone model stock and price
+     */
+	bool flag;
 	
-	int nrOfPhones=0;
-	
-	ofstream  exportMe(filepathWithFileName.c_str(), ios::in | ios::binary);
+	int nrOfPhonesI=0;
+
+	ofstream  exportMe(filePathWithFileName.c_str(), ios::in); // reminder: | ios::binary
 	if(!exportMe.is_open())
 	{
 		
 	}
 	else
 	{
-		exportMe << this->sizeArray << endl;
-		nrOfPhones=howManyPhones();
-	
-		for(int i = 0; i < nrOfPhones; i++)
+        nrOfPhonesI=howManyPhones();
+		exportMe << this->sizeArray << ' ';
+        exportMe << nrOfPhonesI<<' ';
+
+        this->myStringPtr= new string[this->howManyPhones()];
+		for(int i = 0; i < nrOfPhonesI; i++)
 		{
-			exportMe << this->AllTheDataStored2Array(this->myStringPtr, this->numberOfPhones);
-		
+			exportMe << this->bridge[i]->getModel()<<'\n';
+            exportMe << this->bridge[i]->getStock() <<' ';
+            exportMe << this->bridge[i]->getPrice()<<' ';
 			this->IOdbgOfstream(exportMe);
 		}
+        exportMe <<endl;
 	}
-	
-	
-	
-	
+    exportMe.clear();
 	exportMe.close();
 	
 	flag = exportMe.fail();
@@ -184,25 +149,13 @@ bool CellPhoneHandler::ExportDb(string filepathWithFileName)
 	return flag;
 }
 
-bool CellPhoneHandler::ImportDb(string filepathWithFileName)
+bool CellPhoneHandler::ImportDb(string filePathWithFileName)
 {
 	bool flag = false;
-	/*
-	bool eof=false;
-	
-	bool fail=false;
-	
-	bool bad=false;
-	
-	bool good=false;
-	*/
-	char peekingAt;
-	
-	string tmp_string;
 	
 	ifstream  importMe;
 	
-	importMe.open(filepathWithFileName.c_str(), ios::out | ios::binary);
+	importMe.open(filePathWithFileName.c_str(), ios::out);//reminder | ios::binary
 	if(!importMe.is_open())
 	{
 		;
@@ -214,37 +167,43 @@ bool CellPhoneHandler::ImportDb(string filepathWithFileName)
 		//beginning of file contain sizeArray otherwise things are out of order. the sizeArray is used to create array with object pointers.
 		//then the object contents InStock followed by model followed by price. That makes one object
 	
-		peekingAt= importMe.peek();
+
 	
-		if(isdigit(peekingAt))
+		if(isdigit((int)importMe.peek()))
 		{
 			//read on line until whitespace.
 			importMe >> this->sizeArray;
 		
 			this->IOdbgIfstream(importMe);
-		} 
-		this->bridge= new CellPhone*[this->sizeArray];
+		}
+        if(isdigit((int)importMe.peek()))
+        {
+            //read on line until whitespace.
+            importMe >> this->numberOfPhones;
+
+            this->IOdbgIfstream(importMe);
+        }
+
+        this->bridge= new CellPhone*[this->sizeArray];
 	
-		for(int i= 0; i < this->sizeArray; i++)
+		for(int i= 0; i < this->howManyPhones(); i++)
 		{
+
 			int tmp_Stock, tmp_Price;
-		
-			string tmp_model;
+            string tmp_model;
+
+            getline(importMe, tmp_model, '\n');
+            this->IOdbgIfstream(importMe);
 			importMe >> tmp_Stock;
-		
+
 			this->IOdbgIfstream(importMe);
-		
-			this->bridge[i]->setStock(tmp_Stock);
-			getline(importMe, tmp_model, '\n');
-		
-			this->IOdbgIfstream(importMe);
-		
-			this->bridge[i]->setModel(tmp_model);
+
 			importMe >> tmp_Price;
 		
 			this->IOdbgIfstream(importMe);
 		
-			this->bridge[i]->setPrice(tmp_Price);
+			//this->bridge[i]->setPrice(tmp_Price);
+            this->addPhone(tmp_model,tmp_Stock, tmp_Price);
 		}
 	
 		importMe.clear();
@@ -257,10 +216,17 @@ bool CellPhoneHandler::ImportDb(string filepathWithFileName)
 
 bool CellPhoneHandler::removePhoneByModel(string model)
 {
+	/**********************Fix this*************************************
+	 * Av någon anledning så minskar du fortfarande på medlemsvariabeln,
+	 * som håller koll på arrayens kapacitet i removePhoneByModel.
+	 * Det leder inte till några större problem men du bör inte göra det ändå.
+	 * Om en telefon tas bort så har ju arrayen fortfarande samma kapacitet.
+	 * fix: removed statement.
+	 */
 	//walkthrough the array with pointers to objects and look for matching model name
 	///if it exist overite it with last place element data and delete last place in array then shrink the array
 	bool flag = false;
-	
+
 	//for(int i=0; i < this->sizeArray; i++)
 	for(int i=0; i < this->numberOfPhones; i++)
 	{
@@ -277,8 +243,6 @@ bool CellPhoneHandler::removePhoneByModel(string model)
 			delete this->bridge[this->numberOfPhones-1];
 			
 			//Shrink array on element
-			
-			this->sizeArray--;
 			
 			this->numberOfPhones--;
 			
@@ -369,20 +333,27 @@ bool CellPhoneHandler::changePrice(int forPriceGreaterThan, float percentage)
 
 
 //Using phone obj tostring() and the user granted StringArray that should have the correct number of phones. We fill it and can later be used.
-void CellPhoneHandler::showAllPhones(string &myStringArray)const
+std::string CellPhoneHandler::showAllPhones(void) const
 {
-	for(int i =0; i < this->numberOfPhones; i++)
-	{
-		//
-		/*	How to solve this? Help!! 
-		 * ../InlämningA/CellPhoneHandler.cpp: 
-		 * In member function ‘void CellPhoneHandler::showAllPhones(std::string&) const’:
-		 * ../InlämningA/CellPhoneHandler.cpp:379:20: error:
-		 *  cannot convert ‘std::string {aka std::basic_string<char>}’ to 
-		 *  ‘char’ in assignment myStringArray[i] = this->bridge[i]->toString();
-		 */
-		myStringArray[i] = this->bridge[i]->toString();
-	}
+
+
+		stringstream dd;
+		for(int i =0; i < this->howManyPhones(); i++)
+		{
+			//
+			/*	How to solve this? Help!!
+             * ../InlämningA/CellPhoneHandler.cpp:
+             * In member function ‘void CellPhoneHandler::showAllPhones(std::string&) const’:
+             * ../InlämningA/CellPhoneHandler.cpp:379:20: error:
+             *  cannot convert ‘std::string {aka std::basic_string<char>}’ to
+             *  ‘char’ in assignment myStringArray[i] = this->bridge[i]->toString();
+             *
+             *  Answer: When calling this function the pointer to  the array got sent here as an copy.
+             */
+			//sendArray[i] = this->bridge[i]->toString();
+            dd << this->bridge[i]->toString();
+		}
+        return dd.str();
 }
 
 
@@ -430,3 +401,4 @@ void CellPhoneHandler::IOdbgOfstream(const ofstream &io) const
 	bool flag = io.fail();
 	;
 }
+

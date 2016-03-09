@@ -78,8 +78,8 @@ bool System::stockLegit(const int stock) const
 	bool flag = false;
 	if(stock < 0)
 	{
-		throw runtime_error("Make sure you enter only positive integers"); 
- *              //används med try catch(){ e.what()}
+		throw runtime_error("Make sure you enter only positive integers");
+		//används med try catch(){ e.what()}
 	}
 	else
 	{

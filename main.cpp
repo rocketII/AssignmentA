@@ -12,7 +12,7 @@
  */
 
 #include "System.h"
-
+#include "TestCellPhoneHandler.h"
 using namespace std;
 
 /*
@@ -28,6 +28,9 @@ using namespace std;
  */
 int main(void)
 {
+	std::cout << "I haz phail"<<'\n';
+    //testMyClass();
+    /*
 	// IF WINDOWS _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	//VALGRIND FOR UNIX SYSTEMS
 	System mySystem;
@@ -36,6 +39,7 @@ int main(void)
 	{
 		results = mySystem.menu();
 	}
+     */
 	std::cout << "Exiting" << endl;
 	return 0;
 }

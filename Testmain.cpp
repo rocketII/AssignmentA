@@ -8,7 +8,7 @@
  *
  * Created on den 5 februari 2016, 18:42
  */
-
+/*
 #include <cstdlib>
 #include "TestCellPhoneHandler.h"
 using namespace std;
@@ -16,6 +16,7 @@ using namespace std;
 /*
  * 
  */
+/*
 int main(int argc, char** argv)
 {
 	/*
@@ -26,8 +27,10 @@ int main(int argc, char** argv)
 	 * 
 	 * 
 	 */
+/*
 	void testMyClass();
 
 	return 0;
 }
 
+*/

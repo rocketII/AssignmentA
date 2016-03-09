@@ -23,17 +23,18 @@
 #ifndef CELLPHONEHANDLER_H
 #define CELLPHONEHANDLER_H
 #include "CellPhone.h"
+
 class CellPhoneHandler
 {
 private:
     //Shall point to an CellPhone array containing pointers to objects of the CellPhoneClass
-    CellPhone **bridge = NULL;	
+    CellPhone **bridge = nullptr;
     int sizeArray=5, numberOfPhones=0;
-    string *myStringPtr;
-    bool myStringPtrUsed=false;
+    string *myStringPtr; //used with export and import with files
+
 public:
     
-    //creates cellphone obkject linked with an dynamic array containing pointers.
+    //creates cellphone object linked with an dynamic array containing pointers.
     
     //Constructor also initiate default array which can be expandeble.
     
@@ -57,7 +58,7 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////
 	//AllTheDataStored2Array a.k.a. fillitUp().////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////
-    string AllTheDataStored2Array(string* myStringPtr,const int nrOfPhones);
+    void AllTheDataStored2Array(string*& myStringPtr);
     
     //used with AllTheDataStored2Array (fillItUp())
     
@@ -65,18 +66,20 @@ public:
     
     //Takes all data and save to text file
     
-    bool ExportDb(string filepathWithFileName);
+    bool ExportDb(string filePathWithFileName);
     
     //Takes all data from text file and put in a class array containing data
     
-    bool ImportDb(string filepathWithFileName);
+    bool ImportDb(string filePathWithFileName);
     
     bool removePhoneByModel(string model);
     
     bool addPhone(string model, int InStock, int price);
     
     bool changePrice(int forPriceGreaterThan, float percentage);
-    void showAllPhones(string &myStringArray)const;
+
+    std::string showAllPhones()const;
+    //void showAllPhones(string sendArray[])const;
     
     string showAllPhonesInStockLessthanUints(int units)const;
     

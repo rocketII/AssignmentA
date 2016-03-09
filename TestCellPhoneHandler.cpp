@@ -2,31 +2,67 @@
  * Vi gör tester enligt handlednings dokumentet
  */
 #include"CellPhoneHandler.h"
-#include<cstdlib>
+//#include <cstdlib>
+#include <iostream>
+
 void testMyClass()
 {
-	//1.
+    std::cout << "..."<<'\n';
+    CellPhoneHandler savedFile;
+    std::cout<<savedFile.howManyPhones()<<endl;
+    bool flag4SuccesRead;
+    flag4SuccesRead=savedFile.ImportDb("/home/cellphoneData.txt");
+    if(!flag4SuccesRead)
+    {
+        std::cout << "I haz phail"<<'\n';
+    }
+    else
+    {
+        std::cout<<"I haz pish!!";
+        std::cout<<savedFile.howManyPhones()<<endl;
+    }
+    std::cout<<"init testing..."<<std::endl;
+    std::cout<<"entering phase 1"<<std::endl;
+
+
+    //1.
 	CellPhoneHandler myTest(2);
-	//2.
-	string arr[2];
+    std::cout<<"entering phase 2"<<std::endl;
+
+
+    //2.
 	myTest.addPhone("sony PSP", 10000, 2000);
 	myTest.addPhone("Microsoft phone x3001", 15000, 1000);
-	//3.
-	myTest.AllTheDataStored2Array(arr,myTest.howManyPhones());
+
+
+
+    //3.
+	string *myStringPtrI;
+	int nrOfPhones = myTest.howManyPhones();
+    myStringPtrI = new string[nrOfPhones];
+	myTest.AllTheDataStored2Array(myStringPtrI);
 	for(int i =0; i < myTest.howManyPhones();i++)
 	{
-		cout << arr[i]; 
+		std::cout << myStringPtrI[i];
 	}
-	//4.
+    std::cout<<"entering phase 4"<<std::endl;
+
+
+
+    //4.
 	myTest.addPhone("nintendo Uphone", 1000, 5000);
-	string arrII[3];
-	myTest.AllTheDataStored2Array(arrII,myTest.howManyPhones());
+    nrOfPhones = myTest.howManyPhones();
+    delete myStringPtrI;
+    myStringPtrI = new string[nrOfPhones];
+    myTest.AllTheDataStored2Array(myStringPtrI);
 	for(int i =0; i < myTest.howManyPhones();i++)
 	{
-		cout << arrII[i]; 
+		cout << myStringPtrI[i];
 	}
+    std::cout<<endl;
+    std::cout<<"entering phase 5"<<std::endl;
 	//5
-	bool howItGo = myTest.removePhoneByModel("willies experia", 300, 40);
+	bool howItGo = myTest.removePhoneByModel("Titenic experia");
 	if(howItGo)
 	{
 		cout << "went well. :D"<<endl;
@@ -35,22 +71,34 @@ void testMyClass()
 	{
 		cout << "Sorry! we f**ked up :P"<<endl;
 	}
-	//6
-	myTest.removePhoneByModel("sony PSP", 10000, 2000);
+    std::cout<<"entering phase 6"<<std::endl;
+
+
+    //6
+	myTest.removePhoneByModel("sony PSP");
 	myTest.ExportDb("/home/cellphoneData.txt");
 	//read file the lazy way.
 	system("cat /home/cellphoneData.txt");
-	//7.
-	myTest.removePhoneByModel("Microsoft phone x3001", 15000, 1000);
-	myTest.removePhoneByModel("nintendo Uphone", 1000, 5000);
-	cout<<"got "myTest.howManyPhones()<<" of phones"<<endl;
-	//8.
+    std::cout<<"entering phase 7"<<std::endl;
+
+
+    //7.
+	myTest.removePhoneByModel("Microsoft phone x3001");
+	myTest.removePhoneByModel("nintendo Uphone");
+	cout<<"got "<< myTest.howManyPhones()<<" of phones"<<endl;
+    std::cout<<"entering phase 8"<<std::endl;
+
+
+    //8.
 	myTest.addPhone("sony PSP light", 10000, 2000);
 	myTest.addPhone("Microsoft phone x3001 trial", 15000, 1000);
 	myTest.ExportDb("/home/cellphoneData.txt");
 	//read file the lazy way.
 	system("cat /home/cellphoneData.txt");
-	//9.
+    std::cout <<'\n' <<"entering phase 9" << std::endl;
+
+
+    //9.
 	//copy construct test
 	CellPhoneHandler myTestCopy = myTest;
 	myTestCopy.ExportDb("/home/cellphoneData.txt");
@@ -60,8 +108,10 @@ void testMyClass()
 	myTestII.addPhone("voodoPhone", 33, 23);
 	cout <<"#phones:"<< myTestII.howManyPhones()<<endl;
 	myTestII = myTest;
-	cout <<"#phones:"<< myTestII.howManyPhones()<<endl;
+	cout <<"#phones: "<< myTestII.howManyPhones()<<endl;
 	//kör valgrind på den här eller visual studios variant med macron i main.
+    std::cout<<"test finished"<<endl;
+	getchar();
 }
 /*
 Nedan finner du ett första utkast på testningsförfarande för klassen CellPhoneHandler. Utför detta och
