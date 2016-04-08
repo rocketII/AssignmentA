@@ -1,5 +1,14 @@
 ----------------------------[ Todo ]-------------------------------------------
-
+1. make gift class
+2. test gift class
+3. make container class
+4. test container class with test.cpp
+5. make menu
+6. test menu
+7. send to teacher
+8. wait...
+  8.1 change code
+  8.2 done!
 
 -------------------------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////
