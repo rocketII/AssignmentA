@@ -13,8 +13,8 @@ int main(void)
     testing.newGift("apple", "Super Mario", 1200);
     testing.newGift("DerpCart 64", "JohnWuigi", 1101);
     testing.newGift("bil", "Luigi", 101);
-    testing.change_GiftData("DerpCart 64", "Jogy", 1, true);
-    cout<<"total giftproposals on person are:\n--------\n"<<testing.getGiftsProposals_forPerson("Super Mario");
+    testing.change_GiftData("DerpCart 64", "Jogy", 1,false);
+    cout<<" n--------\n"<<testing.;
   	std::cout << "\nExiting" << endl;
 	return 0;
 }

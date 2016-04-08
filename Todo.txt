@@ -39,9 +39,9 @@ order                                                               tested?(0/1)
 
  8   string getGiftsProposals_forPerson(string)const;                   1
 
- 9   string getGift_notBought(void)const;                               0
+ 9   string getGift_notBought(void)const;                               1
 
- 10  string getGiftsNotBought_GivenPriceRange(int, int);                0
+ 10  string getGiftsNotBought_GivenPriceRange(int, int);                1
 
  11  void rm_GiftProposal(string);                                      0
 
