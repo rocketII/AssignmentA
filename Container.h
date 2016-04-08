@@ -23,6 +23,7 @@ public:
 
 
     Container();
+    Container(int capacity);
     Container(const Container&);
     Container& operator=(const Container&);
     virtual ~Container();
@@ -41,7 +42,7 @@ public:
 
     string get_TotalCost_And_GiftsBoughtForPerson(string)const;
 
-    void rm_GiftProposal(string);
+    string rm_GiftProposal(string);
 
     void rm_BoughtGift(string);
 

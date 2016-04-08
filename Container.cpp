@@ -12,6 +12,13 @@ Container::Container()
     this->nrOfElements=0;
 }
 
+Container::Container(int capacity)
+{
+    this->capacity=capacity;
+    this->cache = new Gift*[this->capacity];
+    this->nrOfElements=0;
+}
+
 Container::~Container()
 {
     for (int i = 0; i < this->nrOfElements ; ++i)
@@ -166,12 +173,15 @@ string Container::get_TotalCost_And_GiftsBoughtForPerson(string string1) const {
     return tt.str() ;
 }
 
-void Container::rm_GiftProposal(string string1)
+string Container::rm_GiftProposal(string string1)
 {
+    stringstream gg;
+    gg << "No matching hit";
     for(int i =0 ; i < this->getNrOfElements(); ++i)
     {
         if(this->cache[i]->getWhat() == string1)
         {
+            gg.str("");
 
             delete this->cache[i];
             this->cache[i]= this->cache[this->nrOfElements-1];
@@ -181,6 +191,7 @@ void Container::rm_GiftProposal(string string1)
 
 
     }
+    return gg.str();
 }
 
 void Container::rm_BoughtGift(string string1)

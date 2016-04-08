@@ -1,14 +1,40 @@
 ----------------------------[ Todo ]-------------------------------------------
-1. make gift class
-2. test gift class
-3. make container class****
-4. test container class with test.cpp
+1. make gift class                              1
+2. test gift class                              1
+3. make container class****                     1
+    4. test container class with test.cpp
 5. make menu
 6. test menu
 7. send to teacher
 8. wait...
   8.1 change code
   8.2 done!
+///////////////////////////////////////////////////////
+1. Skapa en container med den givna kapaciteten 2.  ok!
+
+2. Lägg in 2 presenter
+Skriv ut de strängar som erhålls i arrayen som medlemsfunktionen för Container-objektet
+fyller i.                                                                                   ok!
+
+3. Lägg till ytterligare en present (vilket ska medföra att containerns inre array expanderas).
+Skriv ut de strängar som erhålls i arrayen som medlemsfunktionen för Container-objektet
+fyller i.                                                                                   ok!
+
+4. Försök ta bort en present som inte finns i containern och kontrollera att ingen borttagning
+gjordes samt generera en utskrift av detta. Skriv ut de strängar som erhålls i arrayen som
+medlemsfunktionen för Container-objektet fyller i.                                          ok!
+
+5. Ta bort en present som finns i containern och kontrollera att borttagningen genomförts
+genom att skriva ut de strängar som erhålls i arrayen som medlemsfunktionen för Container-
+objektet fyller i.                                                                        ok!
+
+6. Tag bort de resterande 2 presenterna från containern och kontrollera att containern
+därefter är tom.                                                                          ok!
+
+7. Lägg till 2 nya presenter i containern och kontrollera att dessa finns i containern.
+
+8. Testa på lämpligt sätt kopieringskonstruktor(copykonstruktor) och tilldelningsoperator.
+Avsluta programmet och kontrollera slutligen att inga minnesläckor upptäckts!
 
 -------------------------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////
