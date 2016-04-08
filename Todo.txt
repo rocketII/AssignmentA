@@ -43,9 +43,9 @@ order                                                               tested?(0/1)
 
  10  string getGiftsNotBought_GivenPriceRange(int, int);                1
 
- 11  void rm_GiftProposal(string);                                      0
+ 11  void rm_GiftProposal(string);                                      1
 
- 12   void rm_BoughtGift(string);                                       0
+ 12   void rm_BoughtGift(string);                                       1
 
 
 

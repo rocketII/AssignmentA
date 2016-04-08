@@ -168,12 +168,36 @@ string Container::get_TotalCost_And_GiftsBoughtForPerson(string string1) const {
 
 void Container::rm_GiftProposal(string string1)
 {
+    for(int i =0 ; i < this->getNrOfElements(); ++i)
+    {
+        if(this->cache[i]->getWhat() == string1)
+        {
 
+            delete this->cache[i];
+            this->cache[i]= this->cache[this->nrOfElements-1];
+            this->nrOfElements--;
+
+        }
+
+
+    }
 }
 
 void Container::rm_BoughtGift(string string1)
 {
+    for(int i =0 ; i < this->getNrOfElements(); ++i)
+    {
+        if(this->cache[i]->getWhat() == string1 && this->cache[i]->getBought() == true)
+        {
 
+            delete this->cache[i];
+            this->cache[i]= this->cache[this->nrOfElements-1];
+            this->nrOfElements--;
+
+        }
+
+
+    }
 }
 
 void Container::change_GiftBoughtStatus(string what)
