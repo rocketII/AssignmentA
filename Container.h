@@ -11,8 +11,14 @@ class Container
 {
 private:
     Gift** cache;
+public:
+    int getNrOfElements() const;
+
+private:
     int nrOfElements;
     int capacity;
+    void expandCacheArray(void);
+
 public:
 
 
@@ -20,7 +26,6 @@ public:
     Container(const Container&);
     Container& operator=(const Container&);
     virtual ~Container();
-    void expandCacheArray(void);
 
     void newGift(string what, string recipient, int price);
 
@@ -44,7 +49,7 @@ public:
 
     void change_GiftData(string, string, int, bool );
 
-    string toString_containerData(string[])const;
+    void toString_containerData(string array[])const;
 
 
 

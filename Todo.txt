@@ -21,15 +21,15 @@ order                                                               tested?(0/1)
  1   virtual ~Container();                                              1
  1  void newGift(string what, string recipient, int price);             1
 
- 2   Container(const Container&);                                       0
- 2   Container& operator=(const Container&);                            0
- 2   void expandCacheArray(void);                                       0
+ 2   Container(const Container&);                                       1
+ 2   Container& operator=(const Container&);                            1
+ 2   void expandCacheArray(void);                                       1
 
 
- 3   string toString_containerData(string[])const;
+ 3   string toString_containerData(string[])const;                      1
 
- 4   void change_GiftBoughtStatus(string);
- 4   void change_GiftData(string, string, int, bool );
+ 4   void change_GiftBoughtStatus(string);                              0
+ 4   void change_GiftData(string, string, int, bool );                  0
 
  5   string getAllBought_Gifts(void)const;
 

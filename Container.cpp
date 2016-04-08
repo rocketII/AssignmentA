@@ -6,8 +6,8 @@
 
 Container::Container()
 {
-    this->capacity=1;
-    this->cache = new Gift*[1];
+    this->capacity=2;
+    this->cache = new Gift*[this->capacity];
     this->nrOfElements=0;
 }
 
@@ -29,12 +29,9 @@ void Container::newGift(string string1, string recipient, int price)
     }
     else
     {
-        return ;
-        /*
         this->expandCacheArray();
         this->cache[this->nrOfElements]= new Gift(string1,recipient, price);
         this->nrOfElements++;
-        */
     }
 }
 
@@ -89,15 +86,72 @@ void Container::change_GiftData(string string1, string string2, int i, bool b)
 
 Container::Container(const Container &container)
 {
-
+    this->capacity= container.capacity;
+    this->nrOfElements=container.nrOfElements;
+    this->cache = new Gift*[this->capacity];
+    for (int i = 0; i < this->nrOfElements ; ++i)
+    {
+        this->cache[i]= new Gift(*(container.cache[i]));
+    }
 }
 
 Container &Container::operator=(const Container &container)
 {
+    if(this != &container)
+    {
+
+        for (int i = 0; i < this->nrOfElements ; ++i)
+        {
+            delete this->cache[i];
+        }
+        delete[] this->cache;
+
+        this->capacity= container.capacity;
+        this->nrOfElements=container.nrOfElements;
+
+        this->cache = new Gift*[this->capacity];
+        //Deep copy
+        for (int i = 0; i < this->nrOfElements ; ++i)
+        {
+            this->cache[i]= new Gift(*(container.cache[i]));
+        }
+    }
     return *this;
 }
 
 void Container::expandCacheArray(void)
 {
-    ;
+    Gift** tmp = new Gift*[this->capacity];
+    for (int i = 0; i < this->nrOfElements ; ++i)
+    {
+        tmp[i]= new Gift(*(this->cache[i]));
+    }
+    for (int i = 0; i < this->nrOfElements ; ++i)
+    {
+        delete this->cache[i];
+    }
+    delete[] this->cache;
+
+    this->capacity+= 3;
+
+    this->cache = new Gift*[this->capacity];
+
+    for (int i = 0; i < this->nrOfElements ; ++i)
+    {
+        this->cache[i]= new Gift(*(tmp[i]));
+    }
+}
+
+void Container::toString_containerData(string array[]) const
+{
+    for (int i = 0; i < this->getNrOfElements() ; ++i)
+    {
+        array[i] = this->cache[i]->toString();
+    }
+
+}
+
+int Container::getNrOfElements() const
+{
+    return this->nrOfElements;
 }
