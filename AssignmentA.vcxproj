@@ -74,11 +74,13 @@
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="Gift.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="system.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Container.h" />
     <ClInclude Include="Gift.h" />
+    <ClInclude Include="system.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".dep.inc" />

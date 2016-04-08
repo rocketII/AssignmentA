@@ -1,13 +1,16 @@
 #include "Container.h"
+#include "system.h"
 #include <iostream>
+#include <crtdbg.h>
 using namespace std;
 
 
 int main(void)
 {
     // I use Linux... so... valgrind
-    //_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
+    _CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	System start;
+	start.menu();
 
     // step 1
     Container testing(2);
@@ -18,14 +21,16 @@ int main(void)
     testing.newGift("Zenga", "B. Bauhn", 434);
 
 
-
+	
     // step 3
     string *ptr = new string[testing.getNrOfElements()];
     testing.toString_containerData(ptr);
     for (int u = 0; u < testing.getNrOfElements() ; ++u) {
         cout << ptr[u];
     }
+	delete[] ptr;
     cout<<"\n---\n";
+	
     testing.newGift("Bongo", "W. Bauhn", 344);
     string *aptr = new string[testing.getNrOfElements()];
     testing.toString_containerData(aptr);
@@ -34,8 +39,8 @@ int main(void)
     }
     cout<<"\n---\n";
     delete[] aptr;
-    delete[] ptr;
-
+    
+	/*
 
     // step 4
     cout << testing.rm_GiftProposal("nintendo");
@@ -102,6 +107,8 @@ int main(void)
     }
     cout<<"\n---\n";
     delete[] yptr;
+	*/
+	getchar();
     return 0;
 }
 
