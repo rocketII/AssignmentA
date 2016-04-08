@@ -3,5 +3,5 @@ project(AssignmentA)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp CellPhone.h CellPhoneHandler.h System.h CellPhone.cpp CellPhoneHandler.cpp System.cpp TestCellPhoneHandler.h TestCellPhoneHandler.cpp )
+set(SOURCE_FILES main.cpp test.cpp Gift.cpp Gift.h)
 add_executable(AssignmentA ${SOURCE_FILES})
