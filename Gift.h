@@ -11,14 +11,14 @@ using namespace std;
 class Gift
 {
 private:
-    string what="empty";
-    string recipient="N/A";
-    int price=-1;
-    bool bought=false;
+    string what;
+    string recipient;
+    int price;
+    bool bought;
 
 public:
 
-    Gift(const string &what, const string &recipient, int price) : what(what), recipient(recipient), price(price) { }
+	Gift(const string &what, const string &recipient, int price, bool bought) : what(what), recipient(recipient), price(price), bought(false) { }
 
     string getWhat(void)const;
     string getRecipient(void)const;

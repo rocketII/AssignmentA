@@ -32,13 +32,13 @@ void Container::newGift(string string1, string recipient, int price)
 {
     if(this->nrOfElements < this->capacity )
     {
-        this->cache[this->nrOfElements]= new Gift(string1,recipient, price);
+        this->cache[this->nrOfElements]= new Gift(string1,recipient, price, false);
         this->nrOfElements++;
     }
     else
     {
         this->expandCacheArray();
-        this->cache[this->nrOfElements]= new Gift(string1,recipient, price);
+        this->cache[this->nrOfElements]= new Gift(string1,recipient, price, false);
         this->nrOfElements++;
     }
 }
