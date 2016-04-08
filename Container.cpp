@@ -22,7 +22,20 @@ Container::~Container()
 
 void Container::newGift(string string1, string recipient, int price)
 {
-
+    if(this->nrOfElements < this->capacity )
+    {
+        this->cache[this->nrOfElements]= new Gift(string1,recipient, price);
+        this->nrOfElements++;
+    }
+    else
+    {
+        return ;
+        /*
+        this->expandCacheArray();
+        this->cache[this->nrOfElements]= new Gift(string1,recipient, price);
+        this->nrOfElements++;
+        */
+    }
 }
 
 string Container::getGift_notBought(void) const
@@ -45,7 +58,7 @@ int Container::getTotalSpentMoney(void) const
     return 0;
 }
 
-string Container::getGiftsNotBought_GivenPriceRange(int i)
+string Container::getGiftsNotBought_GivenPriceRange(int i, int end)
 {
     return " ";
 }

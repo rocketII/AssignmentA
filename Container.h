@@ -32,7 +32,7 @@ public:
 
     int getTotalSpentMoney(void)const;
 
-    string getGiftsNotBought_GivenPriceRange(int);
+    string getGiftsNotBought_GivenPriceRange(int start, int end);
 
     string get_TotalCost_And_GiftsBoughtForPerson(string)const;
 

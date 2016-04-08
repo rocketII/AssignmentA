@@ -17,6 +17,9 @@ private:
     bool bought=false;
 
 public:
+
+    Gift(const string &what, const string &recipient, int price) : what(what), recipient(recipient), price(price) { }
+
     string getWhat(void)const;
     string getRecipient(void)const;
     int getPrice(void)const;

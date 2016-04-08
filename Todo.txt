@@ -1,7 +1,7 @@
 ----------------------------[ Todo ]-------------------------------------------
 1. make gift class
 2. test gift class
-3. make container class
+3. make container class****
 4. test container class with test.cpp
 5. make menu
 6. test menu
@@ -13,3 +13,39 @@
 -------------------------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////
 -------------------------------------------------------------------------------
+****   more details
+
+  make & test order 1
+order                                                               tested?(0/1)
+ 1   Container();                                                       1
+ 1   virtual ~Container();                                              1
+ 1  void newGift(string what, string recipient, int price);             1
+
+ 2   Container(const Container&);                                       0
+ 2   Container& operator=(const Container&);                            0
+ 2   void expandCacheArray(void);                                       0
+
+
+ 3   string toString_containerData(string[])const;
+
+ 4   void change_GiftBoughtStatus(string);
+ 4   void change_GiftData(string, string, int, bool );
+
+ 5   string getAllBought_Gifts(void)const;
+
+ 6   int getTotalSpentMoney(void)const;
+
+ 7   string get_TotalCost_And_GiftsBoughtForPerson(string)const;
+
+ 8   string getGiftsProposals_forPerson(string)const;
+
+ 9   string getGift_notBought(void)const;
+
+ 10  string getGiftsNotBought_GivenPriceRange(int, int);
+
+ 11  void rm_GiftProposal(string);
+
+ 12   void rm_BoughtGift(string);
+
+
+
