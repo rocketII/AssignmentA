@@ -61,9 +61,28 @@ string Container::getAllBought_Gifts(void) const
     return dd.str();
 }
 
-string Container::getGiftsProposals_forPerson(string) const
+string Container::getGiftsProposals_forPerson(string string1) const
 {
-    return " ";
+    stringstream tt;
+
+    tt<<"\n The Following matches are: ";
+    tt<<"\n#########################@_*_@####################";
+
+    for(int i = 0; i < this->getNrOfElements(); ++i)
+    {
+        if(this->cache[i]->getBought() == false && this->cache[i]->getRecipient() == string1)
+        {
+
+            tt << this->cache[i]->toString();
+            tt<<"\n--------------------------------------------------";
+
+        }
+
+
+    }
+
+    tt <<"\n#########################@_R_@####################";
+    return tt.str() ;
 }
 
 int Container::getTotalSpentMoney(void) const
@@ -87,7 +106,26 @@ string Container::getGiftsNotBought_GivenPriceRange(int i, int end)
 }
 
 string Container::get_TotalCost_And_GiftsBoughtForPerson(string string1) const {
-    return " " ;
+    stringstream tt;
+    int totz=0;
+    tt<<"\n The Following matches are: ";
+    tt<<"\n#########################@_*_@####################";
+
+    for(int i = 0; i < this->getNrOfElements(); ++i)
+    {
+        if(this->cache[i]->getBought() == true && this->cache[i]->getRecipient() == string1)
+        {
+            totz += this->cache[i]->getPrice();
+            tt << this->cache[i]->toString();
+            tt<<"\n--------------------------------------------------";
+
+        }
+
+
+    }
+
+    tt <<"\nAnd the sum for the above:"<<totz<<"\n#########################@_R_@####################";
+    return tt.str() ;
 }
 
 void Container::rm_GiftProposal(string string1)

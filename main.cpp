@@ -14,7 +14,7 @@ int main(void)
     testing.newGift("DerpCart 64", "JohnWuigi", 1101);
     testing.newGift("bil", "Luigi", 101);
     testing.change_GiftData("DerpCart 64", "Jogy", 1, true);
-    cout<<"total spent money: "<<testing.getTotalSpentMoney();
+    cout<<"total giftproposals on person are:\n--------\n"<<testing.getGiftsProposals_forPerson("Super Mario");
   	std::cout << "\nExiting" << endl;
 	return 0;
 }

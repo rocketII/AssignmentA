@@ -35,9 +35,9 @@ order                                                               tested?(0/1)
 
  6   int getTotalSpentMoney(void)const;                                 1
 
- 7   string get_TotalCost_And_GiftsBoughtForPerson(string)const;        0
+ 7   string get_TotalCost_And_GiftsBoughtForPerson(string)const;        1
 
- 8   string getGiftsProposals_forPerson(string)const;                   0
+ 8   string getGiftsProposals_forPerson(string)const;                   1
 
  9   string getGift_notBought(void)const;                               0
 
