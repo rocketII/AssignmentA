@@ -3,7 +3,8 @@
 //
 
 #include "Container.h"
-
+#include <sstream>
+using namespace std;
 Container::Container()
 {
     this->capacity=2;
@@ -42,7 +43,22 @@ string Container::getGift_notBought(void) const
 
 string Container::getAllBought_Gifts(void) const
 {
-    return " ";
+    stringstream dd;
+    dd<<"\n The Following matches are: ";
+    dd<<"\n--------------------------------------------------";
+    for(int i = 0; i < this->getNrOfElements(); ++i)
+    {
+        if(this->cache[i]->getBought() == true)
+        {
+
+
+            dd <<'\n'<<this->cache[i]->toString();
+            dd<<"\n--------------------------------------------------";
+        }
+
+
+    }
+    return dd.str();
 }
 
 string Container::getGiftsProposals_forPerson(string) const
@@ -52,7 +68,17 @@ string Container::getGiftsProposals_forPerson(string) const
 
 int Container::getTotalSpentMoney(void) const
 {
-    return 0;
+    int totz=0;
+    for(int i = 0; i < this->getNrOfElements(); ++i)
+    {
+        if(this->cache[i]->getBought() == true)
+        {
+            totz += this->cache[i]->getPrice();
+        }
+
+
+    }
+    return totz;
 }
 
 string Container::getGiftsNotBought_GivenPriceRange(int i, int end)
@@ -61,7 +87,7 @@ string Container::getGiftsNotBought_GivenPriceRange(int i, int end)
 }
 
 string Container::get_TotalCost_And_GiftsBoughtForPerson(string string1) const {
-    return " ";
+    return " " ;
 }
 
 void Container::rm_GiftProposal(string string1)

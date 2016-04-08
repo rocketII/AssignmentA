@@ -31,9 +31,9 @@ order                                                               tested?(0/1)
  4   void change_GiftBoughtStatus(string);                              1
  4   void change_GiftData(string, string, int, bool );                  1
 
- 5   string getAllBought_Gifts(void)const;                              0
+ 5   string getAllBought_Gifts(void)const;                              1
 
- 6   int getTotalSpentMoney(void)const;                                 0
+ 6   int getTotalSpentMoney(void)const;                                 1
 
  7   string get_TotalCost_And_GiftsBoughtForPerson(string)const;        0
 
