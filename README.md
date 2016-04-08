@@ -1,2 +1,2 @@
 # AssignmentA
-Inheritence, classes, copy constr, operator overloading. Cellphone Cli  management in c++
+Inheritence, classes, copy constr, operator overloading. Gift  management in c++
