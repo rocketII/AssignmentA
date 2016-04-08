@@ -28,24 +28,24 @@ order                                                               tested?(0/1)
 
  3   string toString_containerData(string[])const;                      1
 
- 4   void change_GiftBoughtStatus(string);                              0
- 4   void change_GiftData(string, string, int, bool );                  0
+ 4   void change_GiftBoughtStatus(string);                              1
+ 4   void change_GiftData(string, string, int, bool );                  1
 
- 5   string getAllBought_Gifts(void)const;
+ 5   string getAllBought_Gifts(void)const;                              0
 
- 6   int getTotalSpentMoney(void)const;
+ 6   int getTotalSpentMoney(void)const;                                 0
 
- 7   string get_TotalCost_And_GiftsBoughtForPerson(string)const;
+ 7   string get_TotalCost_And_GiftsBoughtForPerson(string)const;        0
 
- 8   string getGiftsProposals_forPerson(string)const;
+ 8   string getGiftsProposals_forPerson(string)const;                   0
 
- 9   string getGift_notBought(void)const;
+ 9   string getGift_notBought(void)const;                               0
 
- 10  string getGiftsNotBought_GivenPriceRange(int, int);
+ 10  string getGiftsNotBought_GivenPriceRange(int, int);                0
 
- 11  void rm_GiftProposal(string);
+ 11  void rm_GiftProposal(string);                                      0
 
- 12   void rm_BoughtGift(string);
+ 12   void rm_BoughtGift(string);                                       0
 
 
 

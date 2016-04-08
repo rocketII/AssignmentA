@@ -74,14 +74,36 @@ void Container::rm_BoughtGift(string string1)
 
 }
 
-void Container::change_GiftBoughtStatus(string string1)
+void Container::change_GiftBoughtStatus(string what)
 {
+    for(int i = 0; i < this->getNrOfElements(); ++i)
+    {
+           if(this->cache[i]->getWhat() == what)
+           {
+               if(this->cache[i]->getBought() == false)
+               {
+                   this->cache[i]->setBought(true);
+               }
+               else
+                   this->cache[i]->setBought(false);
+           }
 
+    }
 }
 
-void Container::change_GiftData(string string1, string string2, int i, bool b)
+void Container::change_GiftData(string what, string recipient, int price, bool bought)
 {
+    for(int i = 0; i < this->getNrOfElements(); ++i)
+    {
+        if(this->cache[i]->getWhat() == what)
+        {
+            this->cache[i]->setWhat(what);
+            this->cache[i]->setPrice(price);
+            this->cache[i]->setRecipient(recipient);
+            this->cache[i]->setBought(bought);
+        }
 
+    }
 }
 
 Container::Container(const Container &container)

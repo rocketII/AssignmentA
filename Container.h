@@ -47,7 +47,7 @@ public:
 
     void change_GiftBoughtStatus(string);
 
-    void change_GiftData(string, string, int, bool );
+    void change_GiftData(string, string, int, bool);
 
     void toString_containerData(string array[])const;
 
