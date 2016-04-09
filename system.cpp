@@ -3,13 +3,13 @@
 
 System::System(void)
 {
-	this->ptr=new string("maoh");
+	this->ptr=new string[1];
 }
 
 
 System::~System(void)
 {
-	delete this->ptr;
+	delete[] this->ptr;
 }
 void System::menutxt(void)const
 {
@@ -194,7 +194,8 @@ void System::change_GiftData(void){
 
 void System::toString_containerData(void)
 {
-	delete this->ptr;
+	delete[] this->ptr;
+
 	cout<<"\n Skriver till sk\x84rm all data.............";
 	this->ptr = new string[this->instance.getNrOfElements()];
 	this->instance.toString_containerData(ptr);
