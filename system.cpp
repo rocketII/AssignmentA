@@ -3,13 +3,13 @@
 
 System::System(void)
 {
-	this->ptr=new string;
+	this->ptr=new string("maoh");
 }
 
 
 System::~System(void)
 {
-	delete ptr;
+	delete this->ptr;
 }
 void System::menutxt(void)const
 {

@@ -75,3 +75,16 @@ order                                                               tested?(0/1)
 
 
 
+//////////////////////////////////////////////////////////////////////////
+
+Invalid free() / delete / delete[] / realloc()
+==4321==    at 0x4C2A360: operator delete(void*) (vg_replace_malloc.c:507)
+==4321==    by 0x405E12: System::~System() (system.cpp:12)
+==4321==    by 0x402787: main (main.cpp:12)
+==4321==  Address 0x5a02d38 is 8 bytes inside a block of size 32 alloc'd
+==4321==    at 0x4C298A0: operator new[](unsigned long) (vg_replace_malloc.c:389)
+==4321==    by 0x4069E4: System::toString_containerData() (system.cpp:199)
+==4321==    by 0x406063: System::menu() (system.cpp:84)
+==4321==    by 0x402776: main (main.cpp:11)
+
+
