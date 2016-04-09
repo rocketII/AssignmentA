@@ -1,12 +1,24 @@
 #include "Container.h"
 #include "system.h"
 #include <iostream>
+<<<<<<< HEAD
+//#include <crtdbg.h>//windows none std
+=======
 #include <crtdbg.h>
+>>>>>>> origin/master
 using namespace std;
 
 
 int main(void)
 {
+<<<<<<< HEAD
+	//only windows
+    //_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+    cout << "init";
+	System start;
+	start.menu();
+    cout<<"exit";
+=======
     // I use Linux... so... valgrind
     _CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	System start;
@@ -109,6 +121,7 @@ int main(void)
     delete[] yptr;
 	*/
 	getchar();
+>>>>>>> origin/master
     return 0;
 }
 

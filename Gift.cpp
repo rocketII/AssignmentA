@@ -36,7 +36,7 @@ void Gift::setWhat(string what)
 string Gift::toString() const
 {
     stringstream rr;
-    rr <<"\npresent: "<< this->getWhat() <<"\nprice: "<< this->getPrice() << "\nrecipient: "<<this->getRecipient();
+    rr <<"\npresent: "<< this->getWhat() <<"\npris: "<< this->getPrice() << "\nMottagare: "<<this->getRecipient();
     return rr.str() ;
 }
 

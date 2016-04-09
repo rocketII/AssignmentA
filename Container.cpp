@@ -182,6 +182,7 @@ string Container::rm_GiftProposal(string string1)
         if(this->cache[i]->getWhat() == string1)
         {
             gg.str("");
+<<<<<<< HEAD
 
             delete this->cache[i];
             this->cache[i]= this->cache[this->nrOfElements-1];
@@ -189,6 +190,15 @@ string Container::rm_GiftProposal(string string1)
 
         }
 
+=======
+
+            delete this->cache[i];
+            this->cache[i]= this->cache[this->nrOfElements-1];
+            this->nrOfElements--;
+
+        }
+
+>>>>>>> origin/master
 
     }
     return gg.str();
@@ -206,8 +216,13 @@ void Container::rm_BoughtGift(string string1)
             this->nrOfElements--;
 
         }
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> origin/master
     }
 }
 
@@ -299,6 +314,11 @@ void Container::expandCacheArray(void)
     {
         this->cache[i]= new Gift(*(tmp[i]));
     }
+	for (int i = 0; i < this->nrOfElements ; ++i)
+    {
+        delete tmp[i];
+    }
+    delete[] tmp;
 }
 
 void Container::toString_containerData(string array[]) const

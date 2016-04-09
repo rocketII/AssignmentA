@@ -6,9 +6,16 @@ using namespace std;
 class System
 {
 private:
+<<<<<<< HEAD
+	string *ptr;
+	Container instance;
+	void add(void);
+	void menutxt(void)const;
+=======
 	Container instance;
 	void add(void);
 
+>>>>>>> origin/master
     void getGift_notBought(void)const;
 
     void getAllBought_Gifts(void)const;
@@ -29,7 +36,11 @@ private:
 
     void change_GiftData(void);
 
+<<<<<<< HEAD
+    void toString_containerData(void);
+=======
     void toString_containerData(void)const;
+>>>>>>> origin/master
 public:
 	System(void);
 	~System(void);
