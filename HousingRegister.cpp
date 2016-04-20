@@ -38,6 +38,7 @@ HousingRegister::HousingRegister(const HousingRegister &orgin)
         this->cache[i]= new House(*(orgin.cache[i]));
     }
 }
+//tested
 HousingRegister & HousingRegister::operator=(const HousingRegister &orgin)
 {
     if(this != &orgin)
@@ -88,14 +89,38 @@ void HousingRegister::add(const string &IDnummer, const string &adress, const st
     }
 }
 //B
-void HousingRegister::toString_containerData(string array[])const
+//tested
+void HousingRegister::toString_Data(string array[])const
 {
-    ;
+    for (int i = 0; i < this->getNrOfElements() ; ++i)
+    {
+        array[i] = this->cache[i]->toString();
+    }
 }
-//C  print data below
-string HousingRegister::getGiftsNotBought_GivenPriceRange(int below)
+//C  print data below rent
+//tested
+string HousingRegister::getData_belowGivenRent(int belowrent)
 {
-    ;
+    stringstream tri;
+
+    tri<<"\n The Following matches are: ";
+    tri<<"\n#########################@_*_@####################";
+
+    for(int i =0 ; i < this->getNrOfElements(); ++i)
+    {
+        if(this->cache[i]->getHyra() < belowrent)
+        {
+
+            tri << this->cache[i]->toString();
+            tri<<"\n--------------------------------------------------";
+
+        }
+
+
+    }
+
+    tri <<"\n#########################@_R_@####################";
+    return tri.str() ;
 }
 //D show data based on room nr and  houseType
 string HousingRegister::get_TotalCost_And_GiftsBoughtForPerson(string houseType, int roomNr)const
@@ -163,29 +188,7 @@ void HousingRegister::expandCacheArray(void)
 
 
 
-string Container::getGift_notBought(void) const
-{
-    stringstream t;
 
-    t<<"\n The Following matches are: ";
-    t<<"\n#########################@_*_@####################";
-
-    for(int i = 0; i < this->getNrOfElements(); ++i)
-    {
-        if(this->cache[i]->getBought() == false)
-        {
-
-            t << this->cache[i]->toString();
-            t<<"\n--------------------------------------------------";
-
-        }
-
-
-    }
-
-    t <<"\n#########################@_R_@####################";
-    return t.str() ;
-}
 
 string Container::getAllBought_Gifts(void) const
 {
@@ -365,14 +368,6 @@ void Container::change_GiftData(string what, string recipient, int price, bool b
 
 
 
-void Container::toString_containerData(string array[]) const
-{
-    for (int i = 0; i < this->getNrOfElements() ; ++i)
-    {
-        array[i] = this->cache[i]->toString();
-    }
-
-}
 
 int Container::getNrOfElements() const
 {

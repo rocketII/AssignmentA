@@ -36,9 +36,9 @@ Klassen Housing beskriver bostad.
     //A
     void add(const string &IDnummer, const string &adress, const string& bostadstyp, int hyra, int boArea, int nrOfRoom);
     //B
-    void toString_containerData(string array[])const;
+    void toString_Data(string array[])const;
     //C  print data below
-    string getGiftsNotBought_GivenPriceRange(int below);
+    string getData_belowGivenRent(int below);
     //D show data based on room nr and  houseType
     string get_TotalCost_And_GiftsBoughtForPerson(string houseType, int roomNr)const;
     //E
