@@ -40,11 +40,11 @@ Klassen Housing beskriver bostad.
     //C  print data below
     string getData_belowGivenRent(int below);
     //D show data based on room nr and  houseType
-    string get_TotalCost_And_GiftsBoughtForPerson(string houseType, int roomNr)const;
+    string get_Data_basedOn_TypeAndRoom(string houseType, int roomNr)const;
     //E
     string rm_GiftProposal(string UID);
     //F
-    void change_GiftData(string UID);
+    void change_GiftData(string UID,const string &adress, const string& bostadstyp, int hyra, int boArea, int nrOfRoom);
     //G
     void saveToFile(string SavePath);
     //H

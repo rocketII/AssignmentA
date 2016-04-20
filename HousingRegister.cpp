@@ -12,6 +12,7 @@
 
 #include "HousingRegister.h"
 #include <sstream>
+#include <fstream>
 using namespace std;
 //tested
 HousingRegister::HousingRegister()
@@ -123,24 +124,78 @@ string HousingRegister::getData_belowGivenRent(int belowrent)
     return tri.str() ;
 }
 //D show data based on room nr and  houseType
-string HousingRegister::get_TotalCost_And_GiftsBoughtForPerson(string houseType, int roomNr)const
+//tested
+string HousingRegister::get_Data_basedOn_TypeAndRoom(string houseType, int roomNr)const
 {
-    ;
+    stringstream tt;
+    tt<<"\n The Following matches are: ";
+    tt<<"\n#########################@_*_@####################";
+
+    for(int i = 0; i < this->getNrOfElements(); ++i)
+    {
+        if(this->cache[i]->getBostadstyp() == houseType && this->cache[i]->getNrOfRoom() == roomNr)
+        {
+            tt << this->cache[i]->toString();
+            tt<<"\n--------------------------------------------------";
+
+        }
+
+
+    }
+
+    tt <<"\n#########################@_R_@####################";
+    return tt.str() ;
 }
 //E
+//tested
 string HousingRegister::rm_GiftProposal(string UID)
 {
-    ;
+    stringstream gg;
+    gg << "No matching hit";
+    for(int i =0 ; i < this->getNrOfElements(); ++i)
+    {
+        if(this->cache[i]->getIDnummer() == UID)
+        {
+            gg.str("");
+
+            delete this->cache[i];
+            this->cache[i]= this->cache[this->nrOfElements-1];
+            this->nrOfElements--;
+
+        }
+
+
+    }
+    return gg.str();
 }
 //F
-void HousingRegister::change_GiftData(string UID)
+//tested
+void HousingRegister::change_GiftData(string UID,const string &adress, const string& bostadstyp, int hyra, int boArea, int nrOfRoom)
 {
-    ;
+    for(int i = 0; i < this->getNrOfElements(); ++i)
+    {
+        if(this->cache[i]->getIDnummer() == UID)
+        {
+            this->cache[i]->setIDnummer(UID);
+            this->cache[i]->setAdress(adress);
+            this->cache[i]->setBostadstyp(bostadstyp);
+            this->cache[i]->setHyra(hyra);
+            this->cache[i]->setBoArea(boArea);
+            this->cache[i]->setNrOfRoom(nrOfRoom);
+        }
+
+    }
 }
 //G
 void HousingRegister::saveToFile(string SavePath)
 {
-    ;
+    string open;
+    ifstream openFile;
+    openFile.open(open);
+    if(openFile.is_open())
+    {
+
+    }
 }
 //H
 void HousingRegister::loadToProgram(string loadPath)
@@ -190,131 +245,16 @@ void HousingRegister::expandCacheArray(void)
 
 
 
-string Container::getAllBought_Gifts(void) const
-{
-    stringstream dd;
-    dd<<"\n The Following matches are: ";
-    dd<<"\n--------------------------------------------------";
-    for(int i = 0; i < this->getNrOfElements(); ++i)
-    {
-        if(this->cache[i]->getBought() == true)
-        {
 
 
-            dd <<'\n'<<this->cache[i]->toString();
-            dd<<"\n--------------------------------------------------";
-        }
 
 
-    }
-    return dd.str();
-}
-
-string Container::getGiftsProposals_forPerson(string string1) const
-{
-    stringstream tt;
-
-    tt<<"\n The Following matches are: ";
-    tt<<"\n#########################@_*_@####################";
-
-    for(int i = 0; i < this->getNrOfElements(); ++i)
-    {
-        if(this->cache[i]->getBought() == false && this->cache[i]->getRecipient() == string1)
-        {
-
-            tt << this->cache[i]->toString();
-            tt<<"\n--------------------------------------------------";
-
-        }
 
 
-    }
-
-    tt <<"\n#########################@_R_@####################";
-    return tt.str() ;
-}
-
-int Container::getTotalSpentMoney(void) const
-{
-    int totz=0;
-    for(int i = 0; i < this->getNrOfElements(); ++i)
-    {
-        if(this->cache[i]->getBought() == true)
-        {
-            totz += this->cache[i]->getPrice();
-        }
-
-
-    }
-    return totz;
-}
-
-string Container::getGiftsNotBought_GivenPriceRange(int start, int end)
-{
-    stringstream tri;
-
-    tri<<"\n The Following matches are: ";
-    tri<<"\n#########################@_*_@####################";
-
-    for(int i =0 ; i < this->getNrOfElements(); ++i)
-    {
-        if(this->cache[i]->getBought() == false && (this->cache[i]->getPrice() < end || this->cache[i]->getPrice() == end ) && (this->cache[i]->getPrice() > start || this->cache[i]->getPrice() == start  ))
-        {
-
-            tri << this->cache[i]->toString();
-            tri<<"\n--------------------------------------------------";
-
-        }
-
-
-    }
-
-    tri <<"\n#########################@_R_@####################";
-    return tri.str() ;
-}
-
-string Container::get_TotalCost_And_GiftsBoughtForPerson(string string1) const {
-    stringstream tt;
-    int totz=0;
-    tt<<"\n The Following matches are: ";
-    tt<<"\n#########################@_*_@####################";
-
-    for(int i = 0; i < this->getNrOfElements(); ++i)
-    {
-        if(this->cache[i]->getBought() == true && this->cache[i]->getRecipient() == string1)
-        {
-            totz += this->cache[i]->getPrice();
-            tt << this->cache[i]->toString();
-            tt<<"\n--------------------------------------------------";
-
-        }
-
-
-    }
-
-    tt <<"\nAnd the sum for the above:"<<totz<<"\n#########################@_R_@####################";
-    return tt.str() ;
-}
 
 string Container::rm_GiftProposal(string string1)
 {
-    stringstream gg;
-    gg << "No matching hit";
-    for(int i =0 ; i < this->getNrOfElements(); ++i)
-    {
-        if(this->cache[i]->getWhat() == string1)
-        {
-            gg.str("");
 
-            delete this->cache[i];
-            this->cache[i]= this->cache[this->nrOfElements-1];
-            this->nrOfElements--;
-
-        }
-
-
-    }
-    return gg.str();
 }
 
 void Container::rm_BoughtGift(string string1)
@@ -353,17 +293,7 @@ void Container::change_GiftBoughtStatus(string what)
 
 void Container::change_GiftData(string what, string recipient, int price, bool bought)
 {
-    for(int i = 0; i < this->getNrOfElements(); ++i)
-    {
-        if(this->cache[i]->getWhat() == what)
-        {
-            this->cache[i]->setWhat(what);
-            this->cache[i]->setPrice(price);
-            this->cache[i]->setRecipient(recipient);
-            this->cache[i]->setBought(bought);
-        }
 
-    }
 }
 
 
