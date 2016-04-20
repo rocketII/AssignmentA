@@ -8,7 +8,7 @@
 
 #include <string>
 using namespace std;
-class Gift
+class House
 {
 private:
     string what;
@@ -18,7 +18,7 @@ private:
 
 public:
 
-	Gift(const string &what, const string &recipient, int price, bool bought) : what(what), recipient(recipient), price(price), bought(false) { }
+	House(const string &what, const string &recipient, int price, bool bought) : what(what), recipient(recipient), price(price), bought(false) { }
 
     string getWhat(void)const;
     string getRecipient(void)const;

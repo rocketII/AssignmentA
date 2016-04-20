@@ -18,7 +18,7 @@
     <ClCompile Include="Container.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Gift.cpp">
+    <ClCompile Include="House.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -35,7 +35,7 @@
     <ClInclude Include="Container.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Gift.h">
+    <ClInclude Include="House.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="system.h">

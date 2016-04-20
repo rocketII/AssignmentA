@@ -72,14 +72,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Container.cpp" />
-    <ClCompile Include="Gift.cpp" />
+    <ClCompile Include="House.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="system.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Container.h" />
-    <ClInclude Include="Gift.h" />
+    <ClInclude Include="House.h" />
     <ClInclude Include="system.h" />
   </ItemGroup>
   <ItemGroup>

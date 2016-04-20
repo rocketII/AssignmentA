@@ -8,14 +8,14 @@ using namespace std;
 Container::Container()
 {
     this->capacity=2;
-    this->cache = new Gift*[this->capacity];
+    this->cache = new House *[this->capacity];
     this->nrOfElements=0;
 }
 
 Container::Container(int capacity)
 {
     this->capacity=capacity;
-    this->cache = new Gift*[this->capacity];
+    this->cache = new House *[this->capacity];
     this->nrOfElements=0;
 }
 
@@ -32,13 +32,13 @@ void Container::newGift(string string1, string recipient, int price)
 {
     if(this->nrOfElements < this->capacity )
     {
-        this->cache[this->nrOfElements]= new Gift(string1,recipient, price, false);
+        this->cache[this->nrOfElements]= new House(string1, recipient, price, false);
         this->nrOfElements++;
     }
     else
     {
         this->expandCacheArray();
-        this->cache[this->nrOfElements]= new Gift(string1,recipient, price, false);
+        this->cache[this->nrOfElements]= new House(string1, recipient, price, false);
         this->nrOfElements++;
     }
 }
@@ -247,10 +247,10 @@ Container::Container(const Container &container)
 {
     this->capacity= container.capacity;
     this->nrOfElements=container.nrOfElements;
-    this->cache = new Gift*[this->capacity];
+    this->cache = new House *[this->capacity];
     for (int i = 0; i < this->nrOfElements ; ++i)
     {
-        this->cache[i]= new Gift(*(container.cache[i]));
+        this->cache[i]= new House(*(container.cache[i]));
     }
 }
 
@@ -268,11 +268,11 @@ Container &Container::operator=(const Container &container)
         this->capacity= container.capacity;
         this->nrOfElements=container.nrOfElements;
 
-        this->cache = new Gift*[this->capacity];
+        this->cache = new House *[this->capacity];
         //Deep copy
         for (int i = 0; i < this->nrOfElements ; ++i)
         {
-            this->cache[i]= new Gift(*(container.cache[i]));
+            this->cache[i]= new House(*(container.cache[i]));
         }
     }
     return *this;
@@ -280,10 +280,10 @@ Container &Container::operator=(const Container &container)
 
 void Container::expandCacheArray(void)
 {
-    Gift** tmp = new Gift*[this->capacity];
+    House ** tmp = new House *[this->capacity];
     for (int i = 0; i < this->nrOfElements ; ++i)
     {
-        tmp[i]= new Gift(*(this->cache[i]));
+        tmp[i]= new House(*(this->cache[i]));
     }
     for (int i = 0; i < this->nrOfElements ; ++i)
     {
@@ -293,11 +293,11 @@ void Container::expandCacheArray(void)
 
     this->capacity+= 3;
 
-    this->cache = new Gift*[this->capacity];
+    this->cache = new House *[this->capacity];
 
     for (int i = 0; i < this->nrOfElements ; ++i)
     {
-        this->cache[i]= new Gift(*(tmp[i]));
+        this->cache[i]= new House(*(tmp[i]));
     }
 	for (int i = 0; i < this->nrOfElements ; ++i)
     {

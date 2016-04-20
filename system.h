@@ -1,5 +1,5 @@
 #pragma once
-#include "Container.h"
+#include "HousingRegister.h"
 #include<iostream>
 #include<string>
 using namespace std;
@@ -7,7 +7,7 @@ class System
 {
 private:
 	string *ptr;
-	Container instance;
+	HousingRegister instance;
 	void add(void);
 	void menutxt(void)const;
     void getGift_notBought(void)const;

@@ -5,12 +5,12 @@
 #ifndef ASSIGNMENTA_CONTAINER_H
 #define ASSIGNMENTA_CONTAINER_H
 
-#include "Gift.h"
+#include "House.h"
 
-class Container
+class HousingRegister
 {
 private:
-    Gift** cache;
+    House ** cache;
 public:
     int getNrOfElements() const;
 
@@ -22,11 +22,11 @@ private:
 public:
 
 
-    Container();
-    Container(int capacity);
-    Container(const Container&);
-    Container& operator=(const Container&);
-    virtual ~Container();
+    HousingRegister();
+    HousingRegister(int capacity);
+    HousingRegister(const HousingRegister &);
+    HousingRegister & operator=(const HousingRegister &);
+    virtual ~HousingRegister();
 
     void newGift(string what, string recipient, int price);
 

@@ -1,14 +1,14 @@
 //
 // Created by root on 2016-04-08.
 //
-// Testing of Container Class according to pdf.
-#include "Container.h"
+// Testing of HousingRegister Class according to pdf.
+#include "HousingRegister.h"
 #include <iostream>
 void test(void);
 void test()
 {
     // step 1
-    Container testing(2);
+    HousingRegister testing(2);
 
 
     // step 2
@@ -80,7 +80,7 @@ void test()
     delete[] lptr;
 
     //step 8
-    Container copyConstruct = testing;
+    HousingRegister copyConstruct = testing;
     string *wptr = new string[copyConstruct.getNrOfElements()];
     copyConstruct.toString_containerData(wptr);
     for (int u = 0; u < copyConstruct.getNrOfElements() ; ++u) {
@@ -89,7 +89,7 @@ void test()
     cout<<"\n---\n";
     delete[] wptr;
     testing.rm_GiftProposal("Ketchup");
-    Container opertatorAssignment;
+    HousingRegister opertatorAssignment;
     opertatorAssignment.newGift("Circus", "R. Bauhn", 230004);
     opertatorAssignment.newGift("PlainBoat", "U. Bauhn", 48004);
     opertatorAssignment.operator=(copyConstruct);
