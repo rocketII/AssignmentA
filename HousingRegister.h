@@ -21,41 +21,35 @@ private:
 
 public:
 
-
+    /*
+Klassen Housing beskriver bostad.
+ Egenskaper för bostad ska vara:
+ unikt ID-nummer,
+ adress, hyra, bostadstyp, boarea, antalet rum (t.ex. ”3”).
+ */
     HousingRegister();
     HousingRegister(int capacity);
     HousingRegister(const HousingRegister &);
     HousingRegister & operator=(const HousingRegister &);
     virtual ~HousingRegister();
 
-    void newGift(string what, string recipient, int price);
-
-    string getGift_notBought(void)const;
-
-    string getAllBought_Gifts(void)const;
-
-    string getGiftsProposals_forPerson(string)const;
-
-    int getTotalSpentMoney(void)const;
-
-    string getGiftsNotBought_GivenPriceRange(int start, int end);
-
-    string get_TotalCost_And_GiftsBoughtForPerson(string)const;
-
-    string rm_GiftProposal(string);
-
-    void rm_BoughtGift(string);
-
-    void change_GiftBoughtStatus(string);
-
-    void change_GiftData(string, string, int, bool);
-
+    //A
+    void add(const string &IDnummer, const string &adress, const string& bostadstyp, int hyra, int boArea, int nrOfRoom);
+    //B
     void toString_containerData(string array[])const;
-
-
-
-
-
+    //C  print data below
+    string getGiftsNotBought_GivenPriceRange(int below);
+    //D show data based on room nr and  houseType
+    string get_TotalCost_And_GiftsBoughtForPerson(string houseType, int roomNr)const;
+    //E
+    string rm_GiftProposal(string UID);
+    //F
+    void change_GiftData(string UID);
+    //G
+    void saveToFile(string SavePath);
+    //H
+    void loadToProgram(string loadPath);
+    //Q does null
 };
 
 

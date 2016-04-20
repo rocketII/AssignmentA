@@ -8,29 +8,27 @@ class System
 private:
 	string *ptr;
 	HousingRegister instance;
-	void add(void);
+	// menu
 	void menutxt(void)const;
-    void getGift_notBought(void)const;
+	//A
+	void add(void);
+    //B
+    void show_All(void)const;
+    //C
+    void show_BelowValue(void)const;
+    //D
+    void show_type_and_nrOfRooms(void)const;
+    //E
+    void rm(void)const;
+    //F
+    void change_properties(void);
+    //G
+    void save_On_File(void)const;
+    //H
+    void load_From_File(void);
+    //Q
+    //quit
 
-    void getAllBought_Gifts(void)const;
-
-    void getGiftsProposals_forPerson(void)const;
-
-    void getTotalSpentMoney(void)const;
-
-    void getGiftsNotBought_GivenPriceRange(void);
-
-    void get_TotalCost_And_GiftsBoughtForPerson(void)const;
-
-    void rm_GiftProposal(void);
-
-    void rm_BoughtGift(void);
-
-    void change_GiftBoughtStatus(void);
-
-    void change_GiftData(void);
-
-    void toString_containerData(void);
 public:
 	System(void);
 	~System(void);

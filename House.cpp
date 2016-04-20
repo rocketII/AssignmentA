@@ -1,51 +1,83 @@
 //
 // Created by root on 2016-04-08.
+// Tested and working
 //
 
-#include "Gift.h"
+#include "House.h"
 #include <sstream>
-int Gift::getPrice() const
+
+const string &House::getBostadstyp() const
 {
-    return this->price;
+    return bostadstyp;
 }
 
-string Gift::getRecipient() const
+void House::setBostadstyp(const string &bostadstyp)
 {
-    return this->recipient;
+    House::bostadstyp = bostadstyp;
+}
+const string& House::getIDnummer() const
+{
+    return IDnummer;
 }
 
-string Gift::getWhat() const
+void House::setIDnummer(const string &IDnummer)
 {
-    return this->what;
+    House::IDnummer = IDnummer;
 }
 
-void Gift::setPrice(int price)
+const string& House::getAdress() const
 {
-    this->price=price;
+    return adress;
 }
 
-void Gift::setRecipient(string recipient)
+void House::setAdress(const string &adress)
 {
-    this->recipient= recipient;
+    House::adress = adress;
 }
 
-void Gift::setWhat(string what)
+int House::getHyra() const
 {
-    this->what= what;
+    return hyra;
 }
-string Gift::toString() const
+
+void House::setHyra(int hyra)
+{
+    House::hyra = hyra;
+}
+
+int House::getBoArea() const
+{
+    return boArea;
+}
+
+void House::setBoArea(int boArea)
+{
+    House::boArea = boArea;
+}
+
+int House::getNrOfRoom() const
+{
+    return nrOfRoom;
+}
+
+void House::setNrOfRoom(int nrOfRoom)
+{
+    House::nrOfRoom = nrOfRoom;
+}
+
+string House::toString() const
 {
     stringstream rr;
-    rr <<"\npresent: "<< this->getWhat() <<"\npris: "<< this->getPrice() << "\nMottagare: "<<this->getRecipient();
+    rr <<"\nTyp: "<< this->getBostadstyp() <<"\nHyra: "<< this->getHyra() << "\nAntal Rum: "<<this->getNrOfRoom()<<"\nBoYta: " << this->getBoArea()
+    << "\nAdress: "<<this->getAdress()<<"\nUID: "<<this->getIDnummer();
     return rr.str() ;
 }
 
-bool Gift::getBought(void) const
-{
-    return this->bought;
-}
+/*
+Klassen Housing beskriver bostad.
+ Egenskaper för bostad ska vara:
+ unikt ID-nummer,
+ adress,*/
 
-void Gift::setBought(bool bought)
-{
-    this->bought=bought;
-}
+
+

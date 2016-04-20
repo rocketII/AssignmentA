@@ -1,47 +1,167 @@
 //
 // Created by root on 2016-04-08.
+//  namn              testad
+/* konstructor
+ * destrucktor
+ * copyConstructor
+ * Assignment
+ *
+ *
+ */
 //
 
-#include "Container.h"
+#include "HousingRegister.h"
 #include <sstream>
 using namespace std;
-Container::Container()
+//tested
+HousingRegister::HousingRegister()
 {
-    this->capacity=2;
-    this->cache = new House *[this->capacity];
     this->nrOfElements=0;
+    this->capacity=1;
+    this->cache = new House*[this->capacity];
 }
-
-Container::Container(int capacity)
+//tested
+HousingRegister::HousingRegister(int capacity)
 {
+    this->nrOfElements=0;
     this->capacity=capacity;
-    this->cache = new House *[this->capacity];
-    this->nrOfElements=0;
+    this->cache = new House*[this->capacity];
 }
-
-Container::~Container()
+//tested
+HousingRegister::HousingRegister(const HousingRegister &orgin)
 {
+    this->capacity= orgin.capacity;
+    this->nrOfElements=orgin.nrOfElements;
+    this->cache = new House *[this->capacity];
     for (int i = 0; i < this->nrOfElements ; ++i)
+    {
+        this->cache[i]= new House(*(orgin.cache[i]));
+    }
+}
+HousingRegister & HousingRegister::operator=(const HousingRegister &orgin)
+{
+    if(this != &orgin)
+    {
+
+        for (int i = 0; i < this->nrOfElements ; ++i)
+        {
+            delete this->cache[i];
+        }
+        delete[] this->cache;
+
+        this->capacity= orgin.capacity;
+        this->nrOfElements=orgin.nrOfElements;
+
+        this->cache = new House *[this->capacity];
+        //Deep copy
+        for (int i = 0; i < this->nrOfElements ; ++i)
+        {
+            this->cache[i]= new House(*(orgin.cache[i]));
+        }
+    }
+    return *this;
+}
+//tested
+HousingRegister::~HousingRegister()
+{
+    for (int i = 0; i < this->getNrOfElements() ; ++i)
     {
         delete this->cache[i];
     }
     delete[] this->cache;
 }
 
-void Container::newGift(string string1, string recipient, int price)
+//A
+//tested
+void HousingRegister::add(const string &IDnummer, const string &adress, const string& bostadstyp, int hyra, int boArea, int nrOfRoom)
 {
     if(this->nrOfElements < this->capacity )
     {
-        this->cache[this->nrOfElements]= new House(string1, recipient, price, false);
+        this->cache[this->nrOfElements]= new House(IDnummer, adress, bostadstyp, hyra, boArea,nrOfRoom);
         this->nrOfElements++;
     }
     else
     {
         this->expandCacheArray();
-        this->cache[this->nrOfElements]= new House(string1, recipient, price, false);
+        this->cache[this->nrOfElements]= new House(IDnummer, adress, bostadstyp, hyra, boArea,nrOfRoom);
         this->nrOfElements++;
     }
 }
+//B
+void HousingRegister::toString_containerData(string array[])const
+{
+    ;
+}
+//C  print data below
+string HousingRegister::getGiftsNotBought_GivenPriceRange(int below)
+{
+    ;
+}
+//D show data based on room nr and  houseType
+string HousingRegister::get_TotalCost_And_GiftsBoughtForPerson(string houseType, int roomNr)const
+{
+    ;
+}
+//E
+string HousingRegister::rm_GiftProposal(string UID)
+{
+    ;
+}
+//F
+void HousingRegister::change_GiftData(string UID)
+{
+    ;
+}
+//G
+void HousingRegister::saveToFile(string SavePath)
+{
+    ;
+}
+//H
+void HousingRegister::loadToProgram(string loadPath)
+{
+    ;
+}
+//Q does null
+
+
+//tested
+int HousingRegister::getNrOfElements() const
+{
+    return this->nrOfElements;
+}
+//tested
+void HousingRegister::expandCacheArray(void)
+{
+    House ** tmp = new House *[this->capacity];
+    for (int i = 0; i < this->nrOfElements ; ++i)
+    {
+        tmp[i]= new House(*(this->cache[i]));
+    }
+    for (int i = 0; i < this->nrOfElements ; ++i)
+    {
+        delete this->cache[i];
+    }
+    delete[] this->cache;
+
+    this->capacity+= 2;
+
+    this->cache = new House *[this->capacity];
+
+    for (int i = 0; i < this->nrOfElements ; ++i)
+    {
+        this->cache[i]= new House(*(tmp[i]));
+    }
+    for (int i = 0; i < this->nrOfElements ; ++i)
+    {
+        delete tmp[i];
+    }
+    delete[] tmp;
+}
+
+/*
+
+
 
 string Container::getGift_notBought(void) const
 {
@@ -243,68 +363,7 @@ void Container::change_GiftData(string what, string recipient, int price, bool b
     }
 }
 
-Container::Container(const Container &container)
-{
-    this->capacity= container.capacity;
-    this->nrOfElements=container.nrOfElements;
-    this->cache = new House *[this->capacity];
-    for (int i = 0; i < this->nrOfElements ; ++i)
-    {
-        this->cache[i]= new House(*(container.cache[i]));
-    }
-}
 
-Container &Container::operator=(const Container &container)
-{
-    if(this != &container)
-    {
-
-        for (int i = 0; i < this->nrOfElements ; ++i)
-        {
-            delete this->cache[i];
-        }
-        delete[] this->cache;
-
-        this->capacity= container.capacity;
-        this->nrOfElements=container.nrOfElements;
-
-        this->cache = new House *[this->capacity];
-        //Deep copy
-        for (int i = 0; i < this->nrOfElements ; ++i)
-        {
-            this->cache[i]= new House(*(container.cache[i]));
-        }
-    }
-    return *this;
-}
-
-void Container::expandCacheArray(void)
-{
-    House ** tmp = new House *[this->capacity];
-    for (int i = 0; i < this->nrOfElements ; ++i)
-    {
-        tmp[i]= new House(*(this->cache[i]));
-    }
-    for (int i = 0; i < this->nrOfElements ; ++i)
-    {
-        delete this->cache[i];
-    }
-    delete[] this->cache;
-
-    this->capacity+= 3;
-
-    this->cache = new House *[this->capacity];
-
-    for (int i = 0; i < this->nrOfElements ; ++i)
-    {
-        this->cache[i]= new House(*(tmp[i]));
-    }
-	for (int i = 0; i < this->nrOfElements ; ++i)
-    {
-        delete tmp[i];
-    }
-    delete[] tmp;
-}
 
 void Container::toString_containerData(string array[]) const
 {
@@ -319,3 +378,5 @@ int Container::getNrOfElements() const
 {
     return this->nrOfElements;
 }
+
+*/
