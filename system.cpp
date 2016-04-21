@@ -1,11 +1,9 @@
 #include "system.h"
 
-
 System::System(void)
 {
 	this->ptr=new string[1];
 }
-
 
 System::~System(void)
 {
@@ -19,7 +17,7 @@ void System::menutxt(void)const
 	//system("cls");
 	system("clear");
 	cout<<"//////////////////////////////////////////////////////////////////////////////////////";
-	cout<<"\nPresent hanterare 2016";
+	cout<<"\nHus hanterare 2016";
 	cout<<"\n Tips: efter varje inmatning tryck p\x86 retur-,linefeed- eller radbrytningstangenten.\n";
 	cout<<"A: Lägga till en ny bostad\n"
 <<"B: Presentera alla bostäder.\n"
@@ -48,80 +46,115 @@ void System::menu(void)
 			this->add();
 			break;
 		case 'B':
-			this;
-			break;
-		case 'C':
-			this;
-			break;
-		case 'D':
-			this->show_BelowValue();
-			break;
-		case 'E':
-			this->change_properties();
-			break;
-		case 'F':
-			this->show_type_and_nrOfRooms();
-			break;
-		case 'G':
 			this->show_All();
 			break;
-		case 'H':
+		case 'C':
+			this->show_BelowValue();
+			break;
+		case 'D':
+			this->show_type_and_nrOfRooms();
+			break;
+		case 'E':
 			this->rm();
 			break;
-		case 'Q':
+		case 'F':
+			this->change_properties();
+			break;
+		case 'G':
 			this->save_On_File();
+			break;
+		case 'H':
+			this->load_From_File();
+			break;
+		case 'Q':
+			flag = false;
 			break;
 		};
 		fflush(stdin);
-	} while (flag == true);
+	} while (flag);
 }
 void System::add(void)
 {
-	cout <<"\nL\x84gga till ett nytt f\x94rslag p\x86 present\n";
-	string what, recipient;
-	int price;
-	cout<<"Mottagare: ";
-	getline(cin, recipient);
-	cout<<"\n F\x94rslag p\x86 present: ";
-	getline(cin, what);
-	cout<<"\n Pris: ";
-	cin>>price;
-	this->instance.newGift(what, recipient, price);
+    string id,address, type;
+    int rent, ytaBo, antalrum;
+    cout <<"Hyra: ";
+    cin >> rent;
+    cout <<"BoYta: ";
+    cin >> ytaBo;
+    cout <<"Antal rum: ";
+    cin >> antalrum;
+    cout <<"Unik ID: ";
+    getline(cin,id);
+    cin.ignore();
+    cout <<"Adress: ";
+    getline(cin,address);
+    cin.ignore();
+    cout <<"Typ: ";
+    getline(cin,type);
+    cin.ignore();
+
+	this->instance.add(id,address, type, rent, ytaBo, antalrum);
 }
-void System::show_All(void)const
+void System::show_All(void)
 {
-	cout<<"Printing "<<endl;
-	cout << this->instance.getGift_notBought();
+    delete[] this->ptr;
+    this->ptr = new string[this->instance.getNrOfElements()];
+    this->instance.toString_Data(ptr);
+    for (int i = 0; i < this->instance.getNrOfElements() ; ++i)
+    {
+        cout << this->ptr[i];
+    }
 }
 
 void System::show_BelowValue(void)const
 {
-	cout<<"\n Alla k\x94pta presenter:\n ";
-	cout << this->instance.getAllBought_Gifts();
+    int Belowrent;
+    cout <<"Rent: ";
+    cin >> Belowrent;
+	cout << this->instance.getData_belowGivenRent(Belowrent);
 }
 
 void System::show_type_and_nrOfRooms(void)const
 {
-	string name;
-	cout<<"\n Mottagare: ";
-	getline(cin, name);
-	cout << this->instance.getGiftsProposals_forPerson(name);
+    string type;
+    int nrOfRooms;
+    cout <<"Typ: ";
+    getline(cin, type);
+    cin.ignore();
+    cout <<"Antal rum: ";
+    cin >> nrOfRooms;
+	cout<< this->instance.get_Data_basedOn_TypeAndRoom(type, nrOfRooms);
 }
 
 void System::rm(void)const
 {
-	cout<<"\n Du har k\x94pt presenter f\x94r: ";
-	cout << this->instance.getTotalSpentMoney();
+    string UID;
+    cout <<"Rent: ";
+    getline(cin, UID);
+    cin.ignore();
+	cout<< this->instance.rm(UID);
 }
 
 void System::change_properties(void)
 {
-	int start, end;
-	cout<<"\n Prisintervall start: ";
-	cin >>start;
-	cout<<"\n Prisintervall stopp: ";
-	cin>>end;
-	cout << this->instance.getGiftsNotBought_GivenPriceRange(start, end);
+    string id,address, type;
+    int rent, ytaBo, antalrum;
+    cout <<"Hyra: ";
+    cin >> rent;
+    cout <<"BoYta: ";
+    cin >> ytaBo;
+    cout <<"Antal rum: ";
+    cin >> antalrum;
+    cout <<"Unik ID: ";
+    getline(cin,id);
+    cin.ignore();
+    cout <<"Adress: ";
+    getline(cin,address);
+    cin.ignore();
+    cout <<"Typ: ";
+    getline(cin,type);
+    cin.ignore();
+    this->instance.change_GiftData(id, address, type, rent, ytaBo, antalrum);
 }
 
 void System::save_On_File(void)const
@@ -129,6 +162,7 @@ void System::save_On_File(void)const
 	string savePath;
 	cout << "\nPlats på hårddisk: ";
 	getline(cin, savePath);
+    this->instance.saveToFile(savePath);
 
 }
 
@@ -137,7 +171,7 @@ void System::load_From_File(void)
 	string loadFilePath;
 	cout<<"\nPlats på hårddisk: ";
 	getline(cin, loadFilePath);
-
+    this->instance.loadToProgram(loadFilePath);
 }
 
 

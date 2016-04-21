@@ -13,7 +13,7 @@ private:
 	//A
 	void add(void);
     //B
-    void show_All(void)const;
+    void show_All(void);
     //C
     void show_BelowValue(void)const;
     //D

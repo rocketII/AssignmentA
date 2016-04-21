@@ -20,10 +20,6 @@ class House
 {
 private:
     string IDnummer;
-public:
-
-
-private:
     string adress;
     string bostadstyp;
     int hyra;

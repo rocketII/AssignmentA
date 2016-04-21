@@ -41,8 +41,8 @@ Klassen Housing beskriver bostad.
     string getData_belowGivenRent(int below);
     //D show data based on room nr and  houseType
     string get_Data_basedOn_TypeAndRoom(string houseType, int roomNr)const;
-    //E
-    string rm_GiftProposal(string UID);
+    //E remove house
+    string rm(string UID);
     //F
     void change_GiftData(string UID,const string &adress, const string& bostadstyp, int hyra, int boArea, int nrOfRoom);
     //G

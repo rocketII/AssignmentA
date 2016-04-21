@@ -1,18 +1,11 @@
 //
 // Created by root on 2016-04-08.
-//  namn              testad
-/* konstructor
- * destrucktor
- * copyConstructor
- * Assignment
- *
- *
- */
 //
 
 #include "HousingRegister.h"
 #include <sstream>
 #include <fstream>
+#include <iostream>
 using namespace std;
 //tested
 HousingRegister::HousingRegister()
@@ -148,7 +141,7 @@ string HousingRegister::get_Data_basedOn_TypeAndRoom(string houseType, int roomN
 }
 //E
 //tested
-string HousingRegister::rm_GiftProposal(string UID)
+string HousingRegister::rm(string UID)
 {
     stringstream gg;
     gg << "No matching hit";
@@ -187,20 +180,51 @@ void HousingRegister::change_GiftData(string UID,const string &adress, const str
     }
 }
 //G
+//tested
 void HousingRegister::saveToFile(string SavePath)
 {
-    string open;
-    ifstream openFile;
+    string open= SavePath;
+    ofstream openFile;
     openFile.open(open);
     if(openFile.is_open())
     {
-
+        openFile<<this->getNrOfElements()<<'\n';
+        for (int i = 0; i < this->getNrOfElements() ; ++i)
+        {
+            openFile << this->cache[i]->getBoArea()<<'\n'
+            << this->cache[i]->getHyra()<<'\n'<<this->cache[i]->getNrOfRoom()<<'\n'
+            << this->cache[i]->getAdress()<<'\n'<<this->cache[i]->getBostadstyp()<<'\n'
+            <<this->cache[i]->getIDnummer()<<'\n';
+        }
     }
+    openFile<<EOF;
+    openFile.close();
 }
 //H
+//tested
 void HousingRegister::loadToProgram(string loadPath)
 {
-    ;
+    string read= loadPath;
+    ifstream readFile;
+    readFile.open(read);
+    string adress;
+    string bostadsTyp;
+    string UID;
+    int boYta=0, hyra=0, antalRom=0, elements=0;
+    readFile>>elements;
+    for (int i=0; i < elements; i++ )
+    {
+        //getLine reads untill '\n'. in file theres one to much...
+        readFile >> boYta;
+        readFile>>hyra;
+        readFile>>antalRom;
+        getline(readFile, adress, '\n');
+        getline(readFile, adress, '\n');
+        getline(readFile, bostadsTyp,'\n');
+        getline(readFile, UID,'\n');
+        this->add(UID, adress, bostadsTyp, hyra, boYta, antalRom);
+    }
+    readFile.close();
 }
 //Q does null
 
