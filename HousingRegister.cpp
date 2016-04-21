@@ -118,7 +118,7 @@ string HousingRegister::getData_belowGivenRent(int belowrent)
 }
 //D show data based on room nr and  houseType
 //tested
-string HousingRegister::get_Data_basedOn_TypeAndRoom(string houseType, int roomNr)const
+string HousingRegister::get_Data_basedOn_TypeAndRoom(string& houseType, int roomNr)const
 {
     stringstream tt;
     tt<<"\n The Following matches are: ";
@@ -141,7 +141,7 @@ string HousingRegister::get_Data_basedOn_TypeAndRoom(string houseType, int roomN
 }
 //E
 //tested
-string HousingRegister::rm(string UID)
+string HousingRegister::rm(string& UID)
 {
     stringstream gg;
     gg << "No matching hit";
@@ -163,7 +163,7 @@ string HousingRegister::rm(string UID)
 }
 //F
 //tested
-void HousingRegister::change_GiftData(string UID,const string &adress, const string& bostadstyp, int hyra, int boArea, int nrOfRoom)
+void HousingRegister::change_GiftData(const string& UID,const string& &adress, const string& bostadstyp, int hyra, int boArea, int nrOfRoom)
 {
     for(int i = 0; i < this->getNrOfElements(); ++i)
     {
@@ -181,7 +181,7 @@ void HousingRegister::change_GiftData(string UID,const string &adress, const str
 }
 //G
 //tested
-void HousingRegister::saveToFile(string SavePath)
+void HousingRegister::saveToFile(string& SavePath)
 {
     string open= SavePath;
     ofstream openFile;
@@ -202,7 +202,7 @@ void HousingRegister::saveToFile(string SavePath)
 }
 //H
 //tested
-void HousingRegister::loadToProgram(string loadPath)
+void HousingRegister::loadToProgram(string& loadPath)
 {
     string read= loadPath;
     ifstream readFile;
@@ -262,70 +262,3 @@ void HousingRegister::expandCacheArray(void)
     }
     delete[] tmp;
 }
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-string Container::rm_GiftProposal(string string1)
-{
-
-}
-
-void Container::rm_BoughtGift(string string1)
-{
-    for(int i =0 ; i < this->getNrOfElements(); ++i)
-    {
-        if(this->cache[i]->getWhat() == string1 && this->cache[i]->getBought() == true)
-        {
-
-            delete this->cache[i];
-            this->cache[i]= this->cache[this->nrOfElements-1];
-            this->nrOfElements--;
-
-        }
-
-
-    }
-}
-
-void Container::change_GiftBoughtStatus(string what)
-{
-    for(int i = 0; i < this->getNrOfElements(); ++i)
-    {
-           if(this->cache[i]->getWhat() == what)
-           {
-               if(this->cache[i]->getBought() == false)
-               {
-                   this->cache[i]->setBought(true);
-               }
-               else
-                   this->cache[i]->setBought(false);
-           }
-
-    }
-}
-
-void Container::change_GiftData(string what, string recipient, int price, bool bought)
-{
-
-}
-
-
-
-
-int Container::getNrOfElements() const
-{
-    return this->nrOfElements;
-}
-
-*/

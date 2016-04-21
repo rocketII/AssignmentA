@@ -40,15 +40,15 @@ Klassen Housing beskriver bostad.
     //C  print data below
     string getData_belowGivenRent(int below);
     //D show data based on room nr and  houseType
-    string get_Data_basedOn_TypeAndRoom(string houseType, int roomNr)const;
+    string get_Data_basedOn_TypeAndRoom(string &houseType, int roomNr)const;
     //E remove house
-    string rm(string UID);
+    string rm(string &UID);
     //F
-    void change_GiftData(string UID,const string &adress, const string& bostadstyp, int hyra, int boArea, int nrOfRoom);
+    void change_GiftData(const string &UID,const string& adress, const string& bostadstyp, int hyra, int boArea, int nrOfRoom);
     //G
-    void saveToFile(string SavePath);
+    void saveToFile(string& SavePath);
     //H
-    void loadToProgram(string loadPath);
+    void loadToProgram(string& loadPath);
     //Q does null
 };
 

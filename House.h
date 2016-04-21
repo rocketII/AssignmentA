@@ -9,7 +9,7 @@ Klassen Housing beskriver bostad.
  adress, hyra, bostadstyp, boarea, antalet rum (t.ex. ”3”).
  */
 
-//
+
 
 #ifndef ASSIGNMENTA_GIFT_H
 #define ASSIGNMENTA_GIFT_H

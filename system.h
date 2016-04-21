@@ -15,15 +15,15 @@ private:
     //B
     void show_All(void);
     //C
-    void show_BelowValue(void)const;
+    void show_BelowValue(void);
     //D
     void show_type_and_nrOfRooms(void)const;
     //E
-    void rm(void)const;
+    void rm(void);
     //F
     void change_properties(void);
     //G
-    void save_On_File(void)const;
+    void save_On_File(void);
     //H
     void load_From_File(void);
     //Q

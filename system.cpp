@@ -19,14 +19,14 @@ void System::menutxt(void)const
 	cout<<"//////////////////////////////////////////////////////////////////////////////////////";
 	cout<<"\nHus hanterare 2016";
 	cout<<"\n Tips: efter varje inmatning tryck p\x86 retur-,linefeed- eller radbrytningstangenten.\n";
-	cout<<"A: Lägga till en ny bostad\n"
-<<"B: Presentera alla bostäder.\n"
-<<"C: Presentera bostäder med hyra som understiger angivet värde.\n"
-<<"D: Presentera bostäder som uppfyller angivna kriterier när det gäller bostadstyp och antalet rum\n"
+	cout<<"A: L\x84gga till en ny bostad\n"
+<<"B: Presentera alla bost\x84der.\n"
+<<"C: Presentera bost\x84der med hyra som understiger angivet v\x84rde.\n"
+<<"D: Presentera bost\x84der som uppfyller angivna kriterier n\x84r det g\x84ller bostadstyp och antalet rum\n"
 <<"E: Ta bort en bostad givet ID-numret.\n"
-<<"F: Ändra uppgifter för en bostad givet ID-numret.\n"
-<<"G: Spara alla bostäder på fil där filnamnet matas in av användaren.\n"
-<<"H: Läsa alla bostäder från fil där filnamnet matas in av användaren.\n"
+<<"F: \x84ndra uppgifter f\x94r en bostad givet ID-numret.\n"
+<<"G: Spara alla bost\x84der p\x86 fil d\x84r filnamnet matas in av anv\x84ndaren.\n"
+<<"H: L\x84sa alla bost\x84der fr\x86n fil d\x84r filnamnet matas in av anv\x84ndaren.\n"
 <<"Q: Exit.\n "<<endl;
 }
 void System::menu(void)
@@ -106,7 +106,7 @@ void System::show_All(void)
     }
 }
 
-void System::show_BelowValue(void)const
+void System::show_BelowValue(void)
 {
     int Belowrent;
     cout <<"Rent: ";
@@ -126,7 +126,7 @@ void System::show_type_and_nrOfRooms(void)const
 	cout<< this->instance.get_Data_basedOn_TypeAndRoom(type, nrOfRooms);
 }
 
-void System::rm(void)const
+void System::rm(void)
 {
     string UID;
     cout <<"Rent: ";
@@ -157,10 +157,10 @@ void System::change_properties(void)
     this->instance.change_GiftData(id, address, type, rent, ytaBo, antalrum);
 }
 
-void System::save_On_File(void)const
+void System::save_On_File(void)
 {
 	string savePath;
-	cout << "\nPlats på hårddisk: ";
+	cout << "\nPlats p\x86 h\x86rddisk: ";
 	getline(cin, savePath);
     this->instance.saveToFile(savePath);
 
@@ -169,7 +169,7 @@ void System::save_On_File(void)const
 void System::load_From_File(void)
 {
 	string loadFilePath;
-	cout<<"\nPlats på hårddisk: ";
+	cout<<"\nPlats p\x86 h\x86rddisk: ";
 	getline(cin, loadFilePath);
     this->instance.loadToProgram(loadFilePath);
 }
